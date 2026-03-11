@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bem-vindos à Adcin Templo Central. Conheça nossos cultos, visão e faça parte da nossa família.">
+    <title>Adcin Templo Central</title>
+    <link rel="icon" type="image/svg+xml" href="public/adcinvetor.svg">
+    
+    <!-- Fontes do Google (Montserrat e Poppins para tipografia moderna e limpa) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones do FontAwesome (necessário para as redes sociais) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO (Header) -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- LOGOTIPO: Altere o texto ou insira uma tag <img> aqui -->
+            <a href="#inicio" class="logo"><img src="public/adcin_preto.png" alt="Adcin" class="logo-img"><span>Templo Central</span></a>
+            
+            <!-- Botão Menu Mobile (Oculto no desktop, exibido no mobile) -->
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
+            
+            <!-- MENU DE NAVEGAÇÃO -->
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#cultos">Cultos</a></li>
+                    <li><a href="#localizacao">Localização</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- DESTAQUE (Hero Section) -->
+        <!-- A imagem de fundo é alterada no arquivo style.css na classe .hero -->
+        <section id="inicio" class="hero">
+            <div class="hero-content container">
+                <h1>Uma família para pertencer</h1>
+                <p>A ADCIN – Templo Central é uma casa onde pessoas reais encontram um Deus real, onde ninguém precisa fingir ser perfeito para ser amado, onde caminhamos juntos, aprendendo a seguir a Cristo todos os dias.</p>
+                <div class="hero-buttons">
+                    <!-- Links para ação: Altere os hrefs de acordo com a necessidade (Ex: Link do YouTube) -->
+                    <a href="https://youtube.com/@adcintemplocentral.?si=z_5qxDDBwn0v76hx" class="btn btn-primary">Assista Online</a>
+                    <a href="#localizacao" class="btn btn-secondary">Como Chegar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE NÓS -->
+        <section id="sobre" class="about section">
+            <div class="container about-container">
+                <div class="about-text">
+                    <h2>QUEM SOMOS</h2>
+                    <h3>Somos uma família de fé.</h3>
+                    <p>Uma igreja firmada na Palavra, que ama o Senhor Jesus e comprometida em cuidar de pessoas.</p>
+                    <p>Cremos que a igreja não é um prédio, é gente. <br>
+                        Não é um evento, é comunhão. <br>
+                        Não é apenas um culto, é um estilo de vida. <br>
+                    </p>
+                    <p>Não importa de onde você vem ou qual é a sua história, na nossa casa sempre haverá um lugar especial para você. Junte-se a nós nesta jornada de fé!</p>
+                </div>
+                <!-- Carrossel de Imagens -->
+                <div class="about-image slideshow">
+                    <img src="public/IMG_0313.jpg" alt="Comunhão 1">
+                    <img src="public/_MG_9677.jpg" alt="Comunhão 2">
+                    <img src="public/_MG_9704.jpg" alt="Comunhão 3">
+                    <img src="public/_MG_9819.jpg" alt="Comunhão 4">
+                    <img src="public/_MG_9846.jpg" alt="Comunhão 5">
+                    <img src="public/_MG_9878.jpg" alt="Comunhão 6">
+                </div>
+            </div>
+        </section>
+
+        <!-- GRADE DE HORÁRIOS (Cultos) -->
+        <section id="cultos" class="schedule section bg-light">
+            <div class="container">
+                <h2 class="section-title">Nossos Cultos e Reuniões</h2>
+                <p class="section-subtitle">Reserve um tempo para estar na casa de Deus. Escolha o melhor horário para você e sua família.</p>
+                
+                <div class="schedule-grid">
+                    <!-- CARTÃO 1 -->
+                    <div class="schedule-card">
+                        <div class="card-icon"><i class="fas fa-pray"></i></div>
+                        <h3>Culto de Adoração</h3>
+                        <p class="day">Domingo</p>
+                        <p class="time">18:00</p>
+                        <p class="desc">Momento principal de louvor, adoração e ministração da Palavra para toda a família.</p>
+                    </div>
+                    
+                    <!-- CARTÃO 2 -->
+                    <div class="schedule-card">
+                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                        <h3>Escola Bíblica</h3>
+                        <p class="day">Domingo</p>
+                        <p class="time">08:00</p>
+                        <p class="desc">Aprofunde seu conhecimento nas Escrituras Sagradas com turmas para todas as idades.</p>
+                    </div>
+
+                    <!-- CARTÃO 3 -->
+                    <div class="schedule-card">
+                        <div class="card-icon"><i class="fas fa-dove"></i></div>
+                        <h3>Culto de Ensino</h3>
+                        <p class="day">Sexta-Feira</p>
+                        <p class="time">19:00</p>
+                        <p class="desc">Reunião especialmente dedicada ao ensino profundo da Palavra e fortalecimento da fé.</p>
+                    </div>
+
+                    <!-- CARTÃO 4 -->
+                    <div class="schedule-card">
+                        <div class="card-icon"><i class="fas fa-hand-holding"></i></div>
+                        <h3>Culto de Adoração</h3>
+                        <p class="day">Quarta-Feira</p>
+                        <p class="time">19:00</p>
+                        <p class="desc">Tempo especial de entrega a Deus por meio de cânticos, comunhão sincera e meditação nas Escrituras.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCALIZAÇÃO -->
+        <section id="localizacao" class="location section">
+            <div class="container align-center">
+                <h2 class="section-title">Onde Estamos</h2>
+                <p class="section-subtitle">Estamos de portas abertas esperando por você. Venha nos fazer uma visita!</p>
+                
+                <div class="location-content">
+                    <div class="location-info">
+                        <h3>Endereço</h3>
+                        <!-- Altere os dados de endereço, WhatsApp e e-mail -->
+                        <p><i class="fas fa-map-marker-alt"></i> Cidade Nova III, R. SN 06, 100 - Cidade Nova, Ananindeua - PA, 67130-820</p>
+                        <p><i class="fas fa-phone"></i> (91) 3235-4568</p>
+                        <p><i class="fas fa-envelope"></i> adcin.tc@gmail.com </p>
+                    </div>
+                    
+                    <div class="location-map">
+                        <!-- MAPA DO GOOGLE (Iframe): Substitua o link em src="" pelo link real gerado no Google Maps correspondente à sua igreja -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.679014502915!2d-48.4057302!3d-1.3692777999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a46002680bafab%3A0x437493a6b086c09!2sADCIN%20-%20Templo%20Central!5e0!3m2!1spt-BR!2sbr!4v1773232418049!5m2!1spt-BR!2sbr"
+                            width="100%" 
+                            height="350" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ (Footer) e Redes Sociais -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <h3>Adcin Templo Central</h3>
+                <p>Uma igreja família para você e sua casa.</p>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Conecte-se conosco</h4>
+                <div class="social-icons">
+                    <!-- Links para as redes da igreja: substitua o '#' pela URL correta -->
+                    <a href="https://www.instagram.com/adcin.templocentral?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/adcin.templocentral" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> 
+                    <a href="https://youtube.com/@adcintemplocentral.?si=z_5qxDDBwn0v76hx" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Adcin Templo Central. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

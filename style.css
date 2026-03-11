@@ -1,0 +1,611 @@
+/* ==========================================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================================================== */
+:root {
+    /* Paleta de Cores Recomendada: Azul Marinho, Dourado/Areia, Branco e Cinza */
+    --primary-color: #0E1E3B; /* Azul Marinho (Identidade da Igreja) */
+    --secondary-color: #C5A059; /* Dourado / Accent (Detalhes) */
+    --text-color: #333333; /* Cinza escuro para textos corridos */
+    --text-light: #666666; /* Cinza claro para subtítulos e descrições menores */
+    --bg-light: #F8F9FA; /* Fundo claro para contrastar seções */
+    --white: #FFFFFF;
+    
+    /* Variáveis de Tipografia */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Animação de rolagem suave ao clicar nos links do menu */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden; /* Evita scroll horizontal indesejado num site mobile */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove o espaço fantasma na parte inferior da tag img */
+}
+
+/* ==========================================================
+   UTILITÁRIOS E CLASSES GERAIS
+   ========================================================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.align-center {
+    text-align: center;
+}
+
+/* ==========================================================
+   BOTÕES (Call to Action)
+   ========================================================== */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+/* ==========================================================
+   CABEÇALHO (Header) E NAVEGAÇÃO
+   ========================================================== */
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Mantém o menu preso no topo ao rolar (sticky) */
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+}
+
+.logo span {
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+/* Toggle simples de Menu Mobile (Mobile-first usando puro CSS com "checkbox hack") */
+.menu-checkbox {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* ==========================================================
+   HERO SECTION (Seção de Destaque / Boas-vindas)
+   ========================================================== */
+.hero {
+    /* 
+       IMAGEM DE FUNDO: Substitua a URL baixo por uma foto oficial da igreja.
+       Foi aplicado um gradient escurecido por cima da foto para garantir a legibilidade do texto (Overlay).
+    */
+    background: linear-gradient(rgba(14, 30, 59, 0.7), rgba(14, 30, 59, 0.85)), 
+                url('public/_MG_9831.jpg') center/cover no-repeat;
+    height: 90vh; /* Altura 90% da janela da tela */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-content h1 {
+    color: var(--white);
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-out; /* Animação de entrada do título */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    animation: fadeInUp 1s ease-out; /* Animação de entrada do texto */
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeIn 1.5s ease-out; /* Animação simples de entrada para os botões */
+}
+
+/* ==========================================================
+   SOBRE NÓS
+   ========================================================== */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1; /* Ocupa o tamanho disponível igualmente */
+}
+
+.about-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    border-radius: 8px; /* Bordas arredondadas na imagem */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    overflow: hidden;
+}
+
+.about-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Slideshow Animation */
+.slideshow img {
+    opacity: 0;
+    animation: fadeSlide 24s infinite;
+}
+
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 4s; }
+.slideshow img:nth-child(3) { animation-delay: 8s; }
+.slideshow img:nth-child(4) { animation-delay: 12s; }
+.slideshow img:nth-child(5) { animation-delay: 16s; }
+.slideshow img:nth-child(6) { animation-delay: 20s; }
+
+@keyframes fadeSlide {
+    0%   { opacity: 0; transform: scale(1); }
+    6.25% { opacity: 1; }
+    16.66% { opacity: 1; }
+    22.91% { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 0; }
+}
+
+/* ==========================================================
+   GRADE DE HORÁRIOS (Cultos) - CSS Grid / Cards
+   ========================================================== */
+.schedule-grid {
+    display: grid;
+    /* Com 4 cartões, forçamos um mínimo menor pra caber 2 ou 4 nas telas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.schedule-card {
+    background: var(--white);
+    padding: 35px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+    border-bottom: 4px solid var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito sutil no fundo ao passar o hover */
+.schedule-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(197, 160, 89, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.schedule-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(14, 30, 59, 0.08); /* Sombra leva tom do Azul */
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.schedule-card:hover::before {
+    opacity: 1;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color); /* Ícones combinando com o dourado */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.schedule-card:hover .card-icon {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+.schedule-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.schedule-card .day {
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+.schedule-card .time {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 5px 0 15px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.schedule-card .desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================
+   LOCALIZAÇÃO (Mapa e Contato)
+   ========================================================== */
+.location-content {
+    display: flex;
+    flex-wrap: wrap; /* Flex-wrap pra jogar pra linha de baixo quem não couber na tela mobile */
+    gap: 30px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.location-info {
+    flex: 1; /* Ocupa 1 proporção */
+    min-width: 300px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.location-info h3 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.location-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.location-info p i {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+.location-map {
+    flex: 2; /* O mapa será um pouco mais largo, ocupando 2 proporções */
+    min-width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================
+   RODAPÉ (Footer) e Redes Sociais
+   ========================================================== */
+.footer {
+    background-color: #081121; /* Azul levemente mais escuro do que o primary */
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 60px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Garante que quera sem amassar caso a tela encolha */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand h3 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.footer-social h4 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--secondary-color); /* Fica dourado ao colocar o menu */
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    background-color: #050a14;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================
+   ANIMAÇÕES CSS DE SUPORTE
+   ========================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   MEDIA QUERIES - RESPONSIVIDADE (Tablets e Mobile)
+   ========================================================== */
+
+/* Tablets em diante (Max 900px) */
+@media screen and (max-width: 900px) {
+    .about-container {
+        flex-direction: column; /* Joga texto para cima, imagem para baixo */
+    }
+    
+    .location-content {
+        flex-direction: column; /* Joga box texto pra cima, mapa pra baixo */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* Telas menores (Mobile) Max 768px */
+@media screen and (max-width: 768px) {
+    /* Exibindo ícone de Menu Hamburger */
+    .menu-icon {
+        display: block;
+    }
+    
+    /* Configuração do Dropdown do Menu */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        max-height: 0; /* Esconde e aplica efeito sanfona */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0; /* padding reset */
+    }
+    
+    .nav-menu ul li {
+        text-align: center;
+    }
+    
+    .nav-menu ul li a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    /* Mostrar menu quando checkbox checado pelo label (#menu-toggle) */
+    .menu-checkbox:checked ~ .nav-menu {
+        max-height: 400px;
+    }
+    
+    /* Demais ajustes e reduções para celular */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
+    .section {
+        padding: 50px 0;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
