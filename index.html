@@ -7,10 +7,10 @@
     <title>Adcin Templo Central</title>
     <link rel="icon" type="image/svg+xml" href="public/adcinvetor.svg">
     
-    <!-- Fontes do Google (Montserrat e Poppins para tipografia moderna e limpa) -->
+    <!-- Fontes (Utilizando 'Inter' e Arial/Helvetica de fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Ícones do FontAwesome (necessário para as redes sociais) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,8 +23,12 @@
     <!-- CABEÇALHO (Header) -->
     <header class="header">
         <div class="container header-container">
-            <!-- LOGOTIPO: Altere o texto ou insira uma tag <img> aqui -->
-            <a href="#inicio" class="logo"><img src="public/adcin_preto.png" alt="Adcin" class="logo-img"><span>Templo Central</span></a>
+            <!-- LOGOTIPO: As duas imagens trocam dependendo do tema claro/escuro -->
+            <a href="#inicio" class="logo">
+                <img src="public/adcinpretavetor.svg" alt="Adcin Tema Claro" class="logo-img">
+                <img src="public/adcinvetor.svg" alt="Adcin Tema Escuro" class="logo-img-dark">
+                <span>Templo Central</span>
+            </a>
             
             <!-- Botão Menu Mobile (Oculto no desktop, exibido no mobile) -->
             <input type="checkbox" id="menu-toggle" class="menu-checkbox">
@@ -37,6 +41,17 @@
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#cultos">Cultos</a></li>
                     <li><a href="#localizacao">Localização</a></li>
+                    <!-- Botão de Dark Mode -->
+                    <li>
+                        <label class="theme-switch" for="theme-toggle">
+                            <input type="checkbox" id="theme-toggle" aria-label="Alternar tema">
+                            <div class="slider">
+                                <div class="knob">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </div>
+                        </label>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -184,5 +199,32 @@
         </div>
     </footer>
 
+    <!-- Script para Modo Escuro (Dark Mode) -->
+    <script>
+        const themeToggleCheckbox = document.getElementById('theme-toggle');
+        const themeIcon = document.querySelector('.theme-switch .knob i');
+        const body = document.body;
+
+        // Verifica se há preferência salva no LocalStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggleCheckbox.checked = true;
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+
+        // Alternar tema
+        themeToggleCheckbox.addEventListener('change', () => {
+            if (themeToggleCheckbox.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+    </script>
 </body>
 </html>

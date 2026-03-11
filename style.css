@@ -2,17 +2,37 @@
    RESET E CONFIGURAÇÕES GERAIS
    ========================================================== */
 :root {
-    /* Paleta de Cores Recomendada: Azul Marinho, Dourado/Areia, Branco e Cinza */
-    --primary-color: #0E1E3B; /* Azul Marinho (Identidade da Igreja) */
-    --secondary-color: #C5A059; /* Dourado / Accent (Detalhes) */
-    --text-color: #333333; /* Cinza escuro para textos corridos */
-    --text-light: #666666; /* Cinza claro para subtítulos e descrições menores */
-    --bg-light: #F8F9FA; /* Fundo claro para contrastar seções */
-    --white: #FFFFFF;
+    /* NOVA PALETA DE CORES (Ajuste Super Minimalista e Focado no Azul) */
+    --primary-color: #2e69ff; /* Azul Forte: Cor principal da Igreja, elegante e moderna */
+    --secondary-color: #009b92; /* Verde Turquesa suave: Quase não será usado, apenas em pequenos takes ou hovers ultra discretos */
+    --accent-color: #46fe91; /* Verde Luminoso: Fica fora de botões centrais. Irá somar sutilmente onde há fundos extremamente escuros */
     
-    /* Variáveis de Tipografia */
-    --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Poppins', sans-serif;
+    /* NOVO GRADIENTE MODERNO INSPIRADO NO LAYOUT (Turquesa + Luminoso) */
+    --modern-gradient: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    
+    --text-color: #100f0d; /* Texto primário intenso e limpo */
+    --text-light: #666666; /* Texto para corpo e descrições suavizado para não pesar */
+    --bg-light: #ffffff;  /* TODO o fundo será o mais branco possível na grade */
+    --bg-card: #ffffff;   /* Fundo padrão claro para cartões e header */
+    --white: #ffffff;
+    
+    /* Variáveis de Tipografia - Prioridade máxima para Helvetica Now */
+    --font-heading: 'Helvetica Now Display', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
+    --font-body: 'Helvetica Now Text', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
+    
+    --transition-style: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* ==========================================================
+   DARK MODE
+   ========================================================== */
+.dark-mode {
+    --primary-color: #2e69ff; /* Mantém o azul como marca registrada */
+    --text-color: #ffffff;    /* Textos passam a ser brancos */
+    --text-light: #a0a0a0;    /* Textos secundários em um cinza agradável */
+    --bg-light: #100f0d;      /* Fundo da página fica preto */
+    --bg-card: #1a1917;       /* Os "cards" passarão a ser levemente acinzentados na versão dark */
+    --white: #ffffff;         /* Cor branca original se mantém branca */
 }
 
 * {
@@ -29,7 +49,8 @@ body {
     font-family: var(--font-body);
     color: var(--text-color);
     line-height: 1.6;
-    background-color: var(--white);
+    background-color: var(--bg-light);
+    transition: var(--transition-style);
     overflow-x: hidden; /* Evita scroll horizontal indesejado num site mobile */
 }
 
@@ -38,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 a {
@@ -112,14 +134,17 @@ img {
 }
 
 .btn-primary {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border-color: var(--secondary-color);
+    background: var(--modern-gradient); /* Usa a versão com Gradiente Verde de Fundo Escuro */
+    color: var(--text-color); /* Usamos a fonte Base pois fundo luminoso em volta pede letra escura */
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 155, 146, 0.3); /* Sombra turquesa pra ornar */
 }
 
 .btn-primary:hover {
-    background-color: transparent;
-    color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); /* Inverte a direção ao rolar mouse por cima para "animar gordinho" */
+    color: var(--text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 155, 146, 0.4);
 }
 
 .btn-secondary {
@@ -129,20 +154,22 @@ img {
 }
 
 .btn-secondary:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
+    background-color: var(--white); /* Botão branco */
+    color: var(--primary-color);   /* Texto em Azul */
+    border-color: var(--white);
 }
 
 /* ==========================================================
    CABEÇALHO (Header) E NAVEGAÇÃO
    ========================================================== */
 .header {
-    background-color: var(--white);
+    background-color: var(--bg-card);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky; /* Mantém o menu preso no topo ao rolar (sticky) */
     top: 0;
     z-index: 1000;
     padding: 15px 0;
+    transition: var(--transition-style);
 }
 
 .header-container {
@@ -166,29 +193,116 @@ img {
 }
 
 .logo-img {
-    height: 48px;
+    height: 75px; /* Tamanho maior para compensar a margem transparente interna do SVG preto */
     width: auto;
+}
+
+/* Nova imagem para o dark mode oculta por padrão */
+.logo-img-dark {
+    display: none;
+    height: 52px; /* Tamanho natural um pouco reajustado */
+    width: auto;
+}
+
+/* Regra do Dark Mode para trocar as logos */
+.dark-mode .logo-img {
+    display: none;
+}
+.dark-mode .logo-img-dark {
+    display: block;
 }
 
 .logo span {
     color: var(--secondary-color);
-    font-weight: 400;
+    font-family: 'Helvetica Now Display', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
+    font-weight: 800; /* Peso extra pra combinar bem com logotipos fortes da Helvetica */
+    letter-spacing: -0.5px;
 }
 
 .nav-menu ul {
     display: flex;
+    align-items: center; /* Garante que tudo dentro do menu, incluindo o botão switch, fique 100% alinhado no meio */
     gap: 30px;
+}
+
+.nav-menu ul li {
+    display: flex;
+    align-items: center; /* Força o alinhamento vertical exato entre textos sem se basear na linha base (baseline) */
+    height: 100%;
 }
 
 .nav-menu a {
     font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem; /* Fonte do Menu sutilmente menor para dar vibe "Clean" */
+    color: var(--text-color); /* Menu Preto em vez de colorido */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .nav-menu a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color); /* Fica azulzinho ao passar mouse */
+}
+
+/* ==========================================================
+   BOTÃO DE DARK MODE (Igual à imagem)
+   ========================================================== */
+.theme-switch {
+    display: flex;            /* Isso garante o alinhamento central caso haja problema de "inline" */
+    align-items: center;
+    position: relative;
+    width: 60px;
+    height: 32px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.theme-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #E6E8F0; /* Fundo claro da chave arredondada e suave */
+    border-radius: 34px;
+    transition: 0.4s;
+}
+
+.theme-switch .knob {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white; /* No tema claro a bolinha também é branca */
+    border-radius: 50%;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15); /* Sombra para desgrudar do fundo branco/gelo */
+}
+
+.theme-switch .knob i {
+    font-size: 13px;
+    color: #a0aabf; /* Sol cinza-azulado por padrão */
+    transition: 0.4s;
+}
+
+.theme-switch input:checked + .slider {
+    background-color: #100f0d; /* Fundo preto (Como a imagem de cima) */
+}
+
+.theme-switch input:checked + .slider .knob {
+    transform: translateX(28px);
+    background-color: white; /* Bolinha continua branca */
+}
+
+.theme-switch input:checked + .slider .knob i {
+    color: #a0aabf; /* Lua cinza-azulada */
 }
 
 /* Toggle simples de Menu Mobile (Mobile-first usando puro CSS com "checkbox hack") */
@@ -208,10 +322,10 @@ img {
    ========================================================== */
 .hero {
     /* 
-       IMAGEM DE FUNDO: Substitua a URL baixo por uma foto oficial da igreja.
-       Foi aplicado um gradient escurecido por cima da foto para garantir a legibilidade do texto (Overlay).
+       IMAGEM DE FUNDO
+       O Gradient agora usa a cor base Preta da paleta (100f0d) com transparência para o Hero 
     */
-    background: linear-gradient(rgba(14, 30, 59, 0.7), rgba(14, 30, 59, 0.85)), 
+    background: linear-gradient(rgba(16, 15, 13, 0.75), rgba(16, 15, 13, 0.9)), 
                 url('public/_MG_9831.jpg') center/cover no-repeat;
     height: 90vh; /* Altura 90% da janela da tela */
     min-height: 500px;
@@ -319,14 +433,14 @@ img {
 }
 
 .schedule-card {
-    background: var(--white);
+    background: var(--bg-card);
     padding: 35px 25px;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
     border: 1px solid rgba(0,0,0,0.03);
-    border-bottom: 4px solid var(--secondary-color);
+    border-bottom: 4px solid var(--white); /* Borda invisível para crescimento animado no hover */
     position: relative;
     overflow: hidden;
 }
@@ -343,24 +457,24 @@ img {
 
 .schedule-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(14, 30, 59, 0.08); /* Sombra leva tom do Azul */
-    border-bottom: 4px solid var(--primary-color);
+    box-shadow: 0 15px 35px rgba(46, 105, 255, 0.15); /* Sombra leva tom de Azul */
+    border-bottom: 4px solid var(--primary-color); /* Hover base no Azul */
 }
 
 .schedule-card:hover::before {
-    opacity: 1;
+    opacity: 0; /* Remove aquele fundo estranho nos cartões */
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    color: var(--secondary-color); /* Ícones combinando com o dourado */
+    font-size: 2.2rem;
+    color: var(--primary-color); /* Ícone no Azul Principal */
     margin-bottom: 20px;
     transition: transform 0.3s ease;
 }
 
 .schedule-card:hover .card-icon {
     transform: scale(1.1);
-    color: var(--primary-color);
+    color: var(--primary-color); /* Fica Azul Forte ao hover (Mantém o foco minimalista) */
 }
 
 .schedule-card h3 {
@@ -414,17 +528,18 @@ img {
 .location-info {
     flex: 1; /* Ocupa 1 proporção */
     min-width: 300px;
-    background: var(--primary-color);
+    background: var(--primary-color); /* Fundo Azul Sólido Novo */
     color: var(--white);
     padding: 40px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 0 5px 20px rgba(46, 105, 255, 0.2); /* Sombreado elegante azul */
 }
 
 .location-info h3 {
-    color: var(--secondary-color);
+    color: var(--white); /* Título forte e puramente branco */
     font-size: 1.8rem;
     margin-bottom: 25px;
 }
@@ -435,11 +550,12 @@ img {
     gap: 15px;
     margin-bottom: 20px;
     font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9); /* Branco suavizado para leitura fluida */
 }
 
 .location-info p i {
-    color: var(--secondary-color);
-    font-size: 1.2rem;
+    color: var(--white); /* Ícones completamente brancos e clean */
+    font-size: 1.25rem;
     margin-top: 4px;
 }
 
@@ -455,7 +571,7 @@ img {
    RODAPÉ (Footer) e Redes Sociais
    ========================================================== */
 .footer {
-    background-color: #081121; /* Azul levemente mais escuro do que o primary */
+    background-color: #100f0d; /* Fixo usando Preto puro para não inverter no Dark Mode */
     color: rgba(255, 255, 255, 0.8);
     padding-top: 60px;
 }
@@ -496,12 +612,14 @@ img {
 }
 
 .social-icons a:hover {
-    background-color: var(--secondary-color); /* Fica dourado ao colocar o menu */
+    background: var(--modern-gradient); /* Usando o gradiente super premium ao passar a setinha no footer */
+    color: var(--text-color); /* O ícone fica Preto para dar excelente leitura sobre o fundo colorido claro */
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 155, 146, 0.4); /* Reflete leve brilho turquesa embaixo */
 }
 
 .footer-bottom {
-    background-color: #050a14;
+    background-color: #080706; /* Um tom ainda mais escuro que o 100f0d */
     text-align: center;
     padding: 20px 0;
     font-size: 0.9rem;
@@ -558,7 +676,7 @@ img {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--white);
+        background-color: var(--bg-card);
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         max-height: 0; /* Esconde e aplica efeito sanfona */
         overflow: hidden;
@@ -573,17 +691,21 @@ img {
     
     .nav-menu ul li {
         text-align: center;
+        justify-content: center; /* Centraliza a chave do dark mode para não sumir */
+        width: 100%;
+        min-height: 50px;
     }
     
     .nav-menu ul li a {
         display: block;
         padding: 15px 20px;
         border-bottom: 1px solid rgba(0,0,0,0.05);
+        width: 100%; /* Esparrama os links na tela igual linha inteira */
     }
     
     /* Mostrar menu quando checkbox checado pelo label (#menu-toggle) */
     .menu-checkbox:checked ~ .nav-menu {
-        max-height: 400px;
+        max-height: 450px; /* Aumentado pra garantir espaço pro botão de menu novo */
     }
     
     /* Demais ajustes e reduções para celular */
