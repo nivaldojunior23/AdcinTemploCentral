@@ -312,9 +312,10 @@ img {
 
 .menu-icon {
     display: none;
-    font-size: 1.5rem;
-    color: var(--primary-color);
+    font-size: 1.6rem;
+    color: var(--text-color); /* Alterado de azul para cor de texto padrão (neutro escuro ou branco no darkmode) */
     cursor: pointer;
+    transition: var(--transition-style);
 }
 
 /* ==========================================================
