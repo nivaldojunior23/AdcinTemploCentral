@@ -713,23 +713,28 @@ img {
     display: block;
     color: var(--white); /* Alterado de var(--text-color) para var(--white) */
 }
-.menu-icon:hover {
-    opacity: 0.8;
-    transform: scale(1.1);
+
+.dark-mode .menu-icon {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
-    
     /* Configuração do Dropdown do Menu */
     .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-card);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        max-height: 0; /* Esconde e aplica efeito sanfona */
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-    }
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-card); /* Usa a cor de fundo do tema (Branco no Light / Preto no Dark) */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Sombra para dar profundidade sobre o conteúdo */
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000; /* Garante que o menu fique por CIMA de tudo */
+}
+    /* Garante que o fundo do menu mude no Dark Mode */
+.dark-mode .nav-menu {
+    background-color: var(--bg-card); /* No Dark Mode, var(--bg-card) é #1a1917 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
     
     .nav-menu ul {
         flex-direction: column;
@@ -743,14 +748,43 @@ img {
         width: 100%;
         min-height: 50px;
     }
+    /* Localize onde está o switch no menu mobile */
+.nav-menu ul li:last-child {
+    padding: 40px 0; 
+    display: flex;
+    justify-content: center;
+    border-bottom: none; /* Garante que não apareça linha embaixo dele */
+}
     
     .nav-menu ul li a {
-        display: block;
-        padding: 15px 20px;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        width: 100%; /* Esparrama os links na tela igual linha inteira */
-        color: var(--text-color); /* Retorna o texto para modo escuro/legível pra se destacar no fundo claro da sanfona */
-    }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Linha ultra sutil */
+    color: var(--text-color);
+    padding: 20px;
+    background-color: transparent; /* Evita que herde transparências estranhas */
+}
+    .nav-menu ul li a:hover {
+    background-color: rgba(46, 105, 255, 0.05); /* Um azul clarinho no fundo ao tocar */
+    color: var(--primary-color);
+}
+.nav-menu ul li a:active {
+    transform: scale(0.95); /* Dá a sensação de botão sendo pressionado */
+    color: var(--primary-color);
+}
+.nav-menu ul li a:hover {
+    color: var(--primary-color); /* O texto fica azul ao ser tocado */
+    transform: scale(1.05); /* Um zoom bem sutil */
+    transition: 0.2s;
+}
+
+.dark-mode .nav-menu ul li a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Um branco bem transparente */
+}
+
+/* Efeito de hover no Dark Mode */
+.dark-mode .nav-menu ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--primary-color);
+}
     
     /* Mostrar menu quando checkbox checado pelo label (#menu-toggle) */
     .menu-checkbox:checked ~ .nav-menu {
