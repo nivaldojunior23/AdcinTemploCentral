@@ -27,7 +27,7 @@
    DARK MODE
    ========================================================== */
 .dark-mode {
-    --primary-color: #2e69ff; /* Mantém o azul como marca registrada */
+    --primary-color: #426edb; /* Tom de Azul mais fechado/opaco para não machucar os olhos no contraste */
     --text-color: #ffffff;    /* Textos passam a ser brancos */
     --text-light: #a0a0a0;    /* Textos secundários em um cinza agradável */
     --bg-light: #100f0d;      /* Fundo da página fica preto */
@@ -163,20 +163,21 @@ img {
    CABEÇALHO (Header e Navegação)
    ========================================================== */
 .header {
-    background-color: rgba(255, 255, 255, 0.85); /* Fundo com opacidade para deixar a página de trás passar */
-    backdrop-filter: blur(12px); /* Borrão de fundo de vidro "Glassmorphism" do MacOS/iOS */
+    /* Gradiente redirecionado "to right": Turquesa Escuro começa envolvendo o Logo e flui pro Verde Neon envolvendo o Menu */
+    background: linear-gradient(to right, rgba(0, 155, 146, 0.95), rgba(70, 254, 145, 0.85)); 
+    backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
-    position: sticky; /* Cola o menu no topo ao rolar a página */
+    position: sticky; 
     top: 0;
     z-index: 1000;
     width: 100%;
-    padding: 20px 0; /* Mais espaço/respiro na altura superior e inferior vertical */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* Sombra mais difusa espalhada e leve */
+    padding: 20px 0; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
     transition: var(--transition-style);
 }
 
 .dark-mode .header {
-    background-color: rgba(26, 25, 23, 0.85); /* Efeito vidro na cor Bg-card para não chocar */
+    background: rgba(26, 25, 23, 0.95); /* Header Dark Mode Fica escuro normal */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -191,7 +192,7 @@ img {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--white); /* A logo Inteira Vira Branca para Contraste */
 }
 
 .logo {
@@ -210,21 +211,22 @@ img {
 }
 
 .logo-img {
-    height: 200%; /* Forçando o absurdo para vencer as bordas vazias da arte original importada */
-    transform: scale(1.15); /* Puxa ainda mais em zoom em volta do eixo dela */
-    margin-bottom: -4px; /* Pequeno ajuste basilar se ela pesar abaixo do texto */
+    display: none; /* Escondendo de vez a Logo Preto Simples do fundo dia porque ele agora usa Gradiente */
+    height: 200%; 
+    transform: scale(1.15); 
+    margin-bottom: -4px; 
     width: auto;
 }
 
-/* Nova imagem para o dark mode oculta por padrão */
+/* Nova imagem (Branca / Vazada) Sendo usada como padrão Principal do Site Agora (Dia/Gradient e Noite/Escuro) */
 .logo-img-dark {
-    display: none;
-    height: 100%; /* Pega o tamanho real dos 52px */
+    display: block; /* Vira o Padrão do site já que o topo é Turquesa Forte */
+    height: 100%; 
     width: auto;
     flex-shrink: 0;
 }
 
-/* Regra do Dark Mode para trocar as logos */
+/* Regra do Dark Mode: Mantemos a mesma logo vazada Branca, pois fundo preto pede Logo Branca */
 .dark-mode .logo-img {
     display: none;
 }
@@ -233,48 +235,48 @@ img {
 }
 
 .logo span {
-    color: var(--secondary-color);
+    color: var(--white); /* Texto do templo central em Branco para Estourar no Gradiente Escuro */
     font-family: 'Helvetica Now Display', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
-    font-weight: 800; /* Peso extra pra combinar bem com logotipos fortes da Helvetica */
+    font-weight: 800;
     letter-spacing: -0.5px;
 }
 
 .nav-menu ul {
     display: flex;
-    align-items: center; /* Garante que tudo dentro do menu, incluindo o botão switch, fique 100% alinhado no meio */
+    align-items: center; 
     gap: 30px;
 }
 
 .nav-menu ul li {
     display: flex;
-    align-items: center; /* Força o alinhamento vertical exato entre textos sem se basear na linha base (baseline) */
+    align-items: center; 
     height: 100%;
 }
 
 .nav-menu ul li a {
-    color: var(--text-color);
-    font-weight: 600; /* Levemente mais bold */
+    color: var(--white); /* O Textinhos Início, Culto  em Branco */
+    font-weight: 600; 
     transition: var(--transition-style);
-    position: relative; /* Base para o risco flutuante do hover */
-    padding-bottom: 5px; /* Espacinho entre a letra e a linha que irá surgir */
+    position: relative; 
+    padding-bottom: 5px; 
 }
 
-/* Removendo a troca de cor brutal e adicionando Opacidade caso não for escuro para melhor legibilidade */
+/* Removendo a troca de cor brutal e adicionando Opacidade para melhor legibilidade */
 .nav-menu ul li a:hover {
-    color: var(--text-color); /* Mantemos focado na linha */
+    color: var(--white); 
     opacity: 0.8;
 }
 
-/* Criando Destaque Premium em "Linha Gradiente" que aparece no Hover do menu */
+/* Criando Destaque Premium em "Linha Branca" que aparece no Hover do menu pelo contraste do Fundo Verde  */
 .nav-menu ul li a::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 3px; /* Espessura dessa linha animada */
+    height: 3px; 
     bottom: 0;
     left: 0;
-    background: var(--modern-gradient); /* Injeta o turquesa e luminoso aqui */
-    transition: width 0.3s ease; /* Efeito da linha "crescendo" pelo eixo x */
+    background: var(--white); /* O Risco Fica Branco em vez de Verde Agora */
+    transition: width 0.3s ease; 
     border-radius: 2px;
 }
 
@@ -707,9 +709,14 @@ img {
 /* Telas menores (Mobile) Max 768px */
 @media screen and (max-width: 768px) {
     /* Exibindo ícone de Menu Hamburger */
-    .menu-icon {
-        display: block;
-    }
+.menu-icon {
+    display: block;
+    color: var(--white); /* Alterado de var(--text-color) para var(--white) */
+}
+.menu-icon:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
     
     /* Configuração do Dropdown do Menu */
     .nav-menu {
@@ -742,6 +749,7 @@ img {
         padding: 15px 20px;
         border-bottom: 1px solid rgba(0,0,0,0.05);
         width: 100%; /* Esparrama os links na tela igual linha inteira */
+        color: var(--text-color); /* Retorna o texto para modo escuro/legível pra se destacar no fundo claro da sanfona */
     }
     
     /* Mostrar menu quando checkbox checado pelo label (#menu-toggle) */
@@ -752,6 +760,7 @@ img {
     /* Demais ajustes e reduções para celular */
     .hero-content h1 {
         font-size: 2.2rem;
+        line-height: 1.15; /* Reduz brutalmente o espaço vertical que a fonte herdava do corpo em quebras de linha */
     }
     
     .hero-buttons {

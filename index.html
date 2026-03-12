@@ -216,12 +216,19 @@
         const themeIcon = document.querySelector('.theme-switch .knob i');
         const body = document.body;
 
-        // Verifica se há preferência salva no LocalStorage
+        // Verifica se há preferência salva no LocalStorage ou se o sistema do usuário prefere Modo Escuro
         const savedTheme = localStorage.getItem('theme');
+        
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
             themeToggleCheckbox.checked = true;
             themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else if (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // Se não tem salvamento, mas o Windows/Android do usuário é Escuro (Dark Mode nativo)
+            body.classList.add('dark-mode');
+            themeToggleCheckbox.checked = true;
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'dark'); // Opcional: já gravamos a preferência do sistema pro futuro
         }
 
         // Alternar tema
@@ -235,6 +242,9 @@
                 localStorage.setItem('theme', 'light');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
             }
+            
+            // Fechar Menu Mobile caso esteja aberto ao trocar de tema
+            document.getElementById('menu-toggle').checked = false;
         });
 
         // Fechar Menu Mobile ao clicar em qualquer item da lista de navegação
