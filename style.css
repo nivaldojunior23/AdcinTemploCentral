@@ -753,31 +753,31 @@ img {
     padding: 40px 0; 
     display: flex;
     justify-content: center;
-    border-bottom: none; /* Garante que não apareça linha embaixo dele */
+    border-bottom: none; 
 }
     
     .nav-menu ul li a {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Linha ultra sutil */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
     color: var(--text-color);
     padding: 20px;
-    background-color: transparent; /* Evita que herde transparências estranhas */
+    background-color: transparent; 
 }
     .nav-menu ul li a:hover {
-    background-color: rgba(46, 105, 255, 0.05); /* Um azul clarinho no fundo ao tocar */
+    background-color: rgba(46, 105, 255, 0.05); 
     color: var(--primary-color);
 }
 .nav-menu ul li a:active {
-    transform: scale(0.95); /* Dá a sensação de botão sendo pressionado */
+    transform: scale(0.95); 
     color: var(--primary-color);
 }
 .nav-menu ul li a:hover {
-    color: var(--primary-color); /* O texto fica azul ao ser tocado */
-    transform: scale(1.05); /* Um zoom bem sutil */
+    color: var(--primary-color); 
+    transform: scale(1.05); 
     transition: 0.2s;
 }
 
 .dark-mode .nav-menu ul li a {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Um branco bem transparente */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
 /* Efeito de hover no Dark Mode */
