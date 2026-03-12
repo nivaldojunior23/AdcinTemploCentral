@@ -160,16 +160,24 @@ img {
 }
 
 /* ==========================================================
-   CABEÇALHO (Header) E NAVEGAÇÃO
+   CABEÇALHO (Header e Navegação)
    ========================================================== */
 .header {
-    background-color: var(--bg-card);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky; /* Mantém o menu preso no topo ao rolar (sticky) */
+    background-color: rgba(255, 255, 255, 0.85); /* Fundo com opacidade para deixar a página de trás passar */
+    backdrop-filter: blur(12px); /* Borrão de fundo de vidro "Glassmorphism" do MacOS/iOS */
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky; /* Cola o menu no topo ao rolar a página */
     top: 0;
     z-index: 1000;
-    padding: 15px 0;
+    width: 100%;
+    padding: 20px 0; /* Mais espaço/respiro na altura superior e inferior vertical */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* Sombra mais difusa espalhada e leve */
     transition: var(--transition-style);
+}
+
+.dark-mode .header {
+    background-color: rgba(26, 25, 23, 0.85); /* Efeito vidro na cor Bg-card para não chocar */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header-container {
@@ -192,16 +200,28 @@ img {
     gap: 10px;
 }
 
+/* Fixa a largura visual da logo, prevenindo que o texto ande para o lado ao trocar temas com artes que tem transparências diferentes */
+.logo-wrapper {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .logo-img {
-    height: 75px; /* Tamanho maior para compensar a margem transparente interna do SVG preto */
+    height: 200%; /* Forçando o absurdo para vencer as bordas vazias da arte original importada */
+    transform: scale(1.15); /* Puxa ainda mais em zoom em volta do eixo dela */
+    margin-bottom: -4px; /* Pequeno ajuste basilar se ela pesar abaixo do texto */
     width: auto;
 }
 
 /* Nova imagem para o dark mode oculta por padrão */
 .logo-img-dark {
     display: none;
-    height: 52px; /* Tamanho natural um pouco reajustado */
+    height: 100%; /* Pega o tamanho real dos 52px */
     width: auto;
+    flex-shrink: 0;
 }
 
 /* Regra do Dark Mode para trocar as logos */
@@ -231,17 +251,35 @@ img {
     height: 100%;
 }
 
-.nav-menu a {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 0.95rem; /* Fonte do Menu sutilmente menor para dar vibe "Clean" */
-    color: var(--text-color); /* Menu Preto em vez de colorido */
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.nav-menu ul li a {
+    color: var(--text-color);
+    font-weight: 600; /* Levemente mais bold */
+    transition: var(--transition-style);
+    position: relative; /* Base para o risco flutuante do hover */
+    padding-bottom: 5px; /* Espacinho entre a letra e a linha que irá surgir */
 }
 
-.nav-menu a:hover {
-    color: var(--primary-color); /* Fica azulzinho ao passar mouse */
+/* Removendo a troca de cor brutal e adicionando Opacidade caso não for escuro para melhor legibilidade */
+.nav-menu ul li a:hover {
+    color: var(--text-color); /* Mantemos focado na linha */
+    opacity: 0.8;
+}
+
+/* Criando Destaque Premium em "Linha Gradiente" que aparece no Hover do menu */
+.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Espessura dessa linha animada */
+    bottom: 0;
+    left: 0;
+    background: var(--modern-gradient); /* Injeta o turquesa e luminoso aqui */
+    transition: width 0.3s ease; /* Efeito da linha "crescendo" pelo eixo x */
+    border-radius: 2px;
+}
+
+.nav-menu ul li a:hover::after {
+    width: 100%; /* Expande 100% cobrindo a palavra no Hoover */
 }
 
 /* ==========================================================
@@ -423,17 +461,19 @@ img {
 }
 
 /* ==========================================================
-   GRADE DE HORÁRIOS (Cultos) - CSS Grid / Cards
+   GRADE DE HORÁRIOS (Cultos) - Flexbox Smart Layout
    ========================================================== */
 .schedule-grid {
-    display: grid;
-    /* Com 4 cartões, forçamos um mínimo menor pra caber 2 ou 4 nas telas */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 25px;
     margin-top: 50px;
 }
 
 .schedule-card {
+    flex: 1 1 280px; /* Cresce, encolhe e tem base de 280px */
+    max-width: 320px; /* Trava num tamanho razoável para não virar banner, forçando eles a dividirem linhas harmonicamente (ex: 3 em cima, 2 centralizados embaixo) */
     background: var(--bg-card);
     padding: 35px 25px;
     border-radius: 12px;
@@ -721,6 +761,25 @@ img {
     
     .section {
         padding: 50px 0;
+    }
+
+    /* Transformando a Grade de Cultos num Carrossel Arrastável (Swipe) no Mobile */
+    .schedule-grid {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 20px; /* Espaço para não cortar sombra ou scrollbar */
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        gap: 15px; /* Reduz espaçamento no mobile para indicar que tem mais pro lado */
+    }
+
+    .schedule-card {
+        flex: 0 0 82%; /* Cartão ocupa grande parte mas deixa ver o próximo surgindo */
+        max-width: none;
+        scroll-snap-align: center;
+        margin: 0; 
     }
     
     .footer-container {

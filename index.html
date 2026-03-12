@@ -25,8 +25,10 @@
         <div class="container header-container">
             <!-- LOGOTIPO: As duas imagens trocam dependendo do tema claro/escuro -->
             <a href="#inicio" class="logo">
-                <img src="public/adcinpretavetor.svg" alt="Adcin Tema Claro" class="logo-img">
-                <img src="public/adcinvetor.svg" alt="Adcin Tema Escuro" class="logo-img-dark">
+                <div class="logo-wrapper">
+                    <img src="public/Simplification.svg" alt="Adcin Tema Claro" class="logo-img">
+                    <img src="public/adcinvetor.svg" alt="Adcin Tema Escuro" class="logo-img-dark">
+                </div>
                 <span>Templo Central</span>
             </a>
             
@@ -104,22 +106,13 @@
                 <p class="section-subtitle">Reserve um tempo para estar na casa de Deus. Escolha o melhor horário para você e sua família.</p>
                 
                 <div class="schedule-grid">
-                    <!-- CARTÃO 1 -->
+                    <!-- CARTÃO 5 (Novo Adicionado) -->
                     <div class="schedule-card">
-                        <div class="card-icon"><i class="fas fa-pray"></i></div>
-                        <h3>Culto de Adoração</h3>
-                        <p class="day">Domingo</p>
-                        <p class="time">18:00</p>
-                        <p class="desc">Momento principal de louvor, adoração e ministração da Palavra para toda a família.</p>
-                    </div>
-                    
-                    <!-- CARTÃO 2 -->
-                    <div class="schedule-card">
-                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
-                        <h3>Escola Bíblica</h3>
-                        <p class="day">Domingo</p>
-                        <p class="time">08:00</p>
-                        <p class="desc">Aprofunde seu conhecimento nas Escrituras Sagradas com turmas para todas as idades.</p>
+                        <div class="card-icon"><i class="fas fa-sun"></i></div>
+                        <h3>Culto do Meio Dia</h3>
+                        <p class="day">Segunda a Sexta</p>
+                        <p class="time">12:00</p>
+                        <p class="desc">Pausa diária para buscar a presença de Deus, clamar vitórias e fortalecer o espírito no meio do dia.</p>
                     </div>
 
                     <!-- CARTÃO 4 -->
@@ -138,6 +131,24 @@
                         <p class="day">Sexta-Feira</p>
                         <p class="time">19:00</p>
                         <p class="desc">Reunião especialmente dedicada ao ensino profundo da Palavra e fortalecimento da fé.</p>
+                    </div>
+
+                    <!-- CARTÃO 2 -->
+                    <div class="schedule-card">
+                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                        <h3>Escola Bíblica</h3>
+                        <p class="day">Domingo</p>
+                        <p class="time">08:00</p>
+                        <p class="desc">Aprofunde seu conhecimento nas Escrituras Sagradas com turmas para todas as idades.</p>
+                    </div>
+
+                    <!-- CARTÃO 1 -->
+                    <div class="schedule-card">
+                        <div class="card-icon"><i class="fas fa-pray"></i></div>
+                        <h3>Culto de Adoração</h3>
+                        <p class="day">Domingo</p>
+                        <p class="time">18:00</p>
+                        <p class="desc">Momento principal de louvor, adoração e ministração da Palavra para toda a família.</p>
                     </div>
                 </div>
             </div>
@@ -224,6 +235,14 @@
                 localStorage.setItem('theme', 'light');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
             }
+        });
+
+        // Fechar Menu Mobile ao clicar em qualquer item da lista de navegação
+        const navLinks = document.querySelectorAll('.nav-menu ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menu-toggle').checked = false;
+            });
         });
     </script>
 </body>
