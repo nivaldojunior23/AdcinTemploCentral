@@ -17,6 +17,9 @@
     
     <!-- CSS Externo -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Preload da imagem principal do hero (aparece imediatamente ao abrir o site) -->
+    <link rel="preload" as="image" href="public/_MG_9831.jpg">
 </head>
 <body>
 
@@ -89,7 +92,7 @@
                 </div>
                 <!-- Carrossel de Imagens -->
                 <div class="about-image slideshow">
-                    <img src="public/IMG_0313.jpg" alt="Comunhão 1">
+                    <img src="public/IMG_0313.jpg"  alt="Comunhão 1">
                     <img src="public/_MG_9677.jpg" alt="Comunhão 2">
                     <img src="public/_MG_9704.jpg" alt="Comunhão 3">
                     <img src="public/_MG_9819.jpg" alt="Comunhão 4">
@@ -102,12 +105,12 @@
         <!-- GRADE DE HORÁRIOS (Cultos) -->
         <section id="cultos" class="schedule section bg-light">
             <div class="container">
-                <h2 class="section-title">Nossos Cultos e Reuniões</h2>
-                <p class="section-subtitle">Reserve um tempo para estar na casa de Deus. Escolha o melhor horário para você e sua família.</p>
+                <h2 class="section-title reveal">Nossos Cultos e Reuniões</h2>
+                <p class="section-subtitle reveal reveal-delay-1">Reserve um tempo para estar na casa de Deus. Escolha o melhor horário para você e sua família.</p>
                 
                 <div class="schedule-grid">
                     <!-- CARTÃO 5 (Novo Adicionado) -->
-                    <div class="schedule-card">
+                    <div class="schedule-card reveal reveal-delay-1">
                         <div class="card-icon"><i class="fas fa-sun"></i></div>
                         <h3>Culto do Meio Dia</h3>
                         <p class="day">Segunda a Sexta</p>
@@ -116,7 +119,7 @@
                     </div>
 
                     <!-- CARTÃO 4 -->
-                    <div class="schedule-card">
+                    <div class="schedule-card reveal reveal-delay-2">
                         <div class="card-icon"><i class="fas fa-hand-holding"></i></div>
                         <h3>Culto de Adoração</h3>
                         <p class="day">Quarta-Feira</p>
@@ -125,7 +128,7 @@
                     </div>
 
                     <!-- CARTÃO 3 -->
-                    <div class="schedule-card">
+                    <div class="schedule-card reveal reveal-delay-3">
                         <div class="card-icon"><i class="fas fa-dove"></i></div>
                         <h3>Culto de Ensino</h3>
                         <p class="day">Sexta-Feira</p>
@@ -134,7 +137,7 @@
                     </div>
 
                     <!-- CARTÃO 2 -->
-                    <div class="schedule-card">
+                    <div class="schedule-card reveal reveal-delay-4">
                         <div class="card-icon"><i class="fas fa-book-open"></i></div>
                         <h3>Escola Bíblica</h3>
                         <p class="day">Domingo</p>
@@ -143,7 +146,7 @@
                     </div>
 
                     <!-- CARTÃO 1 -->
-                    <div class="schedule-card">
+                    <div class="schedule-card reveal reveal-delay-5">
                         <div class="card-icon"><i class="fas fa-pray"></i></div>
                         <h3>Culto de Adoração</h3>
                         <p class="day">Domingo</p>
@@ -157,8 +160,8 @@
         <!-- LOCALIZAÇÃO -->
         <section id="localizacao" class="location section">
             <div class="container align-center">
-                <h2 class="section-title">Onde Estamos</h2>
-                <p class="section-subtitle">Estamos de portas abertas esperando por você. Venha nos fazer uma visita!</p>
+                <h2 class="section-title reveal">Onde Estamos</h2>
+                <p class="section-subtitle reveal reveal-delay-1">Estamos de portas abertas esperando por você. Venha nos fazer uma visita!</p>
                 
                 <div class="location-content">
                     <div class="location-info">
@@ -254,6 +257,18 @@
                 document.getElementById('menu-toggle').checked = false;
             });
         });
+
+        // ---- SCROLL REVEAL (IntersectionObserver nativo) ----
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Anima só uma vez
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
