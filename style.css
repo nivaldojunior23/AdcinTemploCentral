@@ -1,38 +1,33 @@
-/* ==========================================================
-   RESET E CONFIGURAÇÕES GERAIS
-   ========================================================== */
+
 :root {
-    /* NOVA PALETA DE CORES (Ajuste Super Minimalista e Focado no Azul) */
-    --primary-color: #2e69ff; /* Azul Forte: Cor principal da Igreja, elegante e moderna */
-    --secondary-color: #009b92; /* Verde Turquesa suave: Quase não será usado, apenas em pequenos takes ou hovers ultra discretos */
-    --accent-color: #46fe91; /* Verde Luminoso: Fica fora de botões centrais. Irá somar sutilmente onde há fundos extremamente escuros */
     
-    /* NOVO GRADIENTE MODERNO INSPIRADO NO LAYOUT (Turquesa + Luminoso) */
+    --primary-color: #2e69ff; 
+    --secondary-color: #009b92; 
+    --accent-color: #46fe91; 
+    
+    
     --modern-gradient: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
     
-    --text-color: #100f0d; /* Texto primário intenso e limpo */
-    --text-light: #666666; /* Texto para corpo e descrições suavizado para não pesar */
-    --bg-light: #ffffff;  /* TODO o fundo será o mais branco possível na grade */
-    --bg-card: #ffffff;   /* Fundo padrão claro para cartões e header */
+    --text-color: #100f0d; 
+    --text-light: #666666; 
+    --bg-light: #ffffff;  
+    --bg-card: #ffffff;   
     --white: #ffffff;
     
-    /* Variáveis de Tipografia - Prioridade máxima para Helvetica Now */
+    
     --font-heading: 'Helvetica Now Display', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
     --font-body: 'Helvetica Now Text', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
     
     --transition-style: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* ==========================================================
-   DARK MODE
-   ========================================================== */
 .dark-mode {
-    --primary-color: #426edb; /* Tom de Azul mais fechado/opaco para não machucar os olhos no contraste */
-    --text-color: #ffffff;    /* Textos passam a ser brancos */
-    --text-light: #a0a0a0;    /* Textos secundários em um cinza agradável */
-    --bg-light: #100f0d;      /* Fundo da página fica preto */
-    --bg-card: #1a1917;       /* Os "cards" passarão a ser levemente acinzentados na versão dark */
-    --white: #ffffff;         /* Cor branca original se mantém branca */
+    --primary-color: #426edb; 
+    --text-color: #ffffff;    
+    --text-light: #a0a0a0;    
+    --bg-light: #100f0d;      
+    --bg-card: #1a1917;       
+    --white: #ffffff;         
 }
 
 * {
@@ -42,7 +37,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Animação de rolagem suave ao clicar nos links do menu */
+    scroll-behavior: smooth; 
 }
 
 body {
@@ -51,7 +46,7 @@ body {
     line-height: 1.6;
     background-color: var(--bg-light);
     transition: var(--transition-style);
-    overflow-x: hidden; /* Evita scroll horizontal indesejado num site mobile */
+    overflow-x: hidden; 
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,12 +70,9 @@ ul {
 img {
     max-width: 100%;
     height: auto;
-    display: block; /* Remove o espaço fantasma na parte inferior da tag img */
+    display: block; 
 }
 
-/* ==========================================================
-   UTILITÁRIOS E CLASSES GERAIS
-   ========================================================== */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -116,13 +108,10 @@ img {
     text-align: center;
 }
 
-/* ==========================================================
-   BOTÕES (Call to Action)
-   ========================================================== */
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    border-radius: 5px; /* Bordas levemente arredondadas */
+    border-radius: 5px; 
     font-family: var(--font-heading);
     font-weight: 600;
     text-transform: uppercase;
@@ -134,14 +123,14 @@ img {
 }
 
 .btn-primary {
-    background: var(--modern-gradient); /* Usa a versão com Gradiente Verde de Fundo Escuro */
-    color: #ffffff; /* Texto branco para melhor contraste sobre o fundo gradient */
+    background: var(--modern-gradient); 
+    color: #ffffff; 
     border: none;
-    box-shadow: 0 5px 15px rgba(0, 155, 146, 0.3); /* Sombra turquesa pra ornar */
+    box-shadow: 0 5px 15px rgba(0, 155, 146, 0.3); 
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); /* Inverte a direção ao rolar mouse por cima para "animar gordinho" */
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); 
     color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 155, 146, 0.4);
@@ -154,16 +143,13 @@ img {
 }
 
 .btn-secondary:hover {
-    background-color: var(--white); /* Botão branco */
-    color: var(--primary-color);   /* Texto em Azul */
+    background-color: var(--white); 
+    color: var(--primary-color);   
     border-color: var(--white);
 }
 
-/* ==========================================================
-   CABEÇALHO (Header e Navegação)
-   ========================================================== */
 .header {
-    /* Gradiente redirecionado "to right": Turquesa Escuro começa envolvendo o Logo e flui pro Verde Neon envolvendo o Menu */
+    
     background: linear-gradient(to right, rgba(0, 155, 146, 0.95), rgba(70, 254, 145, 0.85)); 
     backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
@@ -177,7 +163,7 @@ img {
 }
 
 .dark-mode .header {
-    background: rgba(26, 25, 23, 0.95); /* Header Dark Mode Fica escuro normal */
+    background: rgba(26, 25, 23, 0.95); 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -189,19 +175,15 @@ img {
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white); /* A logo Inteira Vira Branca para Contraste */
-}
-
-.logo {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white); 
 }
 
-/* Fixa a largura visual da logo, prevenindo que o texto ande para o lado ao trocar temas com artes que tem transparências diferentes */
 .logo-wrapper {
     width: 52px;
     height: 52px;
@@ -211,22 +193,20 @@ img {
 }
 
 .logo-img {
-    display: none; /* Escondendo de vez a Logo Preto Simples do fundo dia porque ele agora usa Gradiente */
+    display: none; 
     height: 200%; 
     transform: scale(1.15); 
     margin-bottom: -4px; 
     width: auto;
 }
 
-/* Nova imagem (Branca / Vazada) Sendo usada como padrão Principal do Site Agora (Dia/Gradient e Noite/Escuro) */
 .logo-img-dark {
-    display: block; /* Vira o Padrão do site já que o topo é Turquesa Forte */
+    display: block; 
     height: 100%; 
     width: auto;
     flex-shrink: 0;
 }
 
-/* Regra do Dark Mode: Mantemos a mesma logo vazada Branca, pois fundo preto pede Logo Branca */
 .dark-mode .logo-img {
     display: none;
 }
@@ -235,7 +215,7 @@ img {
 }
 
 .logo span {
-    color: var(--white); /* Texto do templo central em Branco para Estourar no Gradiente Escuro */
+    color: var(--white); 
     font-family: 'Helvetica Now Display', 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
     font-weight: 800;
     letter-spacing: -0.5px;
@@ -254,20 +234,18 @@ img {
 }
 
 .nav-menu ul li a {
-    color: var(--white); /* O Textinhos Início, Culto  em Branco */
+    color: var(--white); 
     font-weight: 600; 
     transition: var(--transition-style);
     position: relative; 
     padding-bottom: 5px; 
 }
 
-/* Removendo a troca de cor brutal e adicionando Opacidade para melhor legibilidade */
 .nav-menu ul li a:hover {
     color: var(--white); 
     opacity: 0.8;
 }
 
-/* Criando Destaque Premium em "Linha Branca" que aparece no Hover do menu pelo contraste do Fundo Verde  */
 .nav-menu ul li a::after {
     content: '';
     position: absolute;
@@ -275,20 +253,17 @@ img {
     height: 3px; 
     bottom: 0;
     left: 0;
-    background: var(--white); /* O Risco Fica Branco em vez de Verde Agora */
+    background: var(--white); 
     transition: width 0.3s ease; 
     border-radius: 2px;
 }
 
 .nav-menu ul li a:hover::after {
-    width: 100%; /* Expande 100% cobrindo a palavra no Hoover */
+    width: 100%; 
 }
 
-/* ==========================================================
-   BOTÃO DE DARK MODE (Igual à imagem)
-   ========================================================== */
 .theme-switch {
-    display: flex;            /* Isso garante o alinhamento central caso haja problema de "inline" */
+    display: flex;            
     align-items: center;
     position: relative;
     width: 60px;
@@ -306,7 +281,7 @@ img {
     position: absolute;
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #E6E8F0; /* Fundo claro da chave arredondada e suave */
+    background-color: #E6E8F0; 
     border-radius: 34px;
     transition: 0.4s;
 }
@@ -317,35 +292,34 @@ img {
     width: 24px;
     left: 4px;
     bottom: 4px;
-    background-color: white; /* No tema claro a bolinha também é branca */
+    background-color: white; 
     border-radius: 50%;
     transition: 0.4s;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15); /* Sombra para desgrudar do fundo branco/gelo */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15); 
 }
 
 .theme-switch .knob i {
     font-size: 13px;
-    color: #a0aabf; /* Sol cinza-azulado por padrão */
+    color: #a0aabf; 
     transition: 0.4s;
 }
 
 .theme-switch input:checked + .slider {
-    background-color: #100f0d; /* Fundo preto (Como a imagem de cima) */
+    background-color: #100f0d; 
 }
 
 .theme-switch input:checked + .slider .knob {
     transform: translateX(28px);
-    background-color: white; /* Bolinha continua branca */
+    background-color: white; 
 }
 
 .theme-switch input:checked + .slider .knob i {
-    color: #a0aabf; /* Lua cinza-azulada */
+    color: #a0aabf; 
 }
 
-/* Toggle simples de Menu Mobile (Mobile-first usando puro CSS com "checkbox hack") */
 .menu-checkbox {
     display: none;
 }
@@ -353,22 +327,16 @@ img {
 .menu-icon {
     display: none;
     font-size: 1.6rem;
-    color: var(--text-color); /* Alterado de azul para cor de texto padrão (neutro escuro ou branco no darkmode) */
+    color: var(--text-color); 
     cursor: pointer;
     transition: var(--transition-style);
 }
 
-/* ==========================================================
-   HERO SECTION (Seção de Destaque / Boas-vindas)
-   ========================================================== */
 .hero {
-    /* 
-       IMAGEM DE FUNDO
-       O Gradient agora usa a cor base Preta da paleta (100f0d) com transparência para o Hero 
-    */
+    
     background: linear-gradient(rgba(16, 15, 13, 0.75), rgba(16, 15, 13, 0.9)), 
                 url('public/_MG_9831.jpg') center/cover no-repeat;
-    height: 90vh; /* Altura 90% da janela da tela */
+    height: 90vh; 
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -380,7 +348,7 @@ img {
     color: var(--white);
     font-size: 3.5rem;
     margin-bottom: 20px;
-    animation: fadeInDown 1s ease-out; /* Animação de entrada do título */
+    animation: fadeInDown 1s ease-out; 
 }
 
 .hero-content p {
@@ -388,19 +356,16 @@ img {
     font-weight: 300;
     max-width: 800px;
     margin: 0 auto 40px;
-    animation: fadeInUp 1s ease-out; /* Animação de entrada do texto */
+    animation: fadeInUp 1s ease-out; 
 }
 
 .hero-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    animation: fadeIn 1.5s ease-out; /* Animação simples de entrada para os botões */
+    animation: fadeIn 1.5s ease-out; 
 }
 
-/* ==========================================================
-   SOBRE NÓS
-   ========================================================== */
 .about-container {
     display: flex;
     align-items: center;
@@ -408,7 +373,7 @@ img {
 }
 
 .about-text {
-    flex: 1; /* Ocupa o tamanho disponível igualmente */
+    flex: 1; 
 }
 
 .about-text h2 {
@@ -427,10 +392,10 @@ img {
     position: relative;
     width: 100%;
     min-height: 400px;
-    border-radius: 8px; /* Bordas arredondadas na imagem */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    border-radius: 8px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
     overflow: hidden;
-    background-color: #1a1917; /* Fallback escuro: evita fundo branco/preto piscando entre fotos */
+    background-color: #1a1917; 
 }
 
 .about-image img {
@@ -442,13 +407,11 @@ img {
     object-fit: cover;
 }
 
-/* Slideshow Animation */
 .slideshow img {
     opacity: 0;
     animation: fadeSlide 24s infinite;
 }
 
-/* A 1ª imagem usa keyframe especial: começa em opacity:1 (sem flash preto inicial) */
 .slideshow img:nth-child(1) { animation-name: fadeSlideFirst; animation-delay: 0s; }
 .slideshow img:nth-child(2) { animation-delay: 4s; }
 .slideshow img:nth-child(3) { animation-delay: 8s; }
@@ -456,7 +419,6 @@ img {
 .slideshow img:nth-child(5) { animation-delay: 16s; }
 .slideshow img:nth-child(6) { animation-delay: 20s; }
 
-/* Keyframe padrão: faz fade-in suave no começo */
 @keyframes fadeSlide {
     0%     { opacity: 0; transform: scale(1); }
     6.25%  { opacity: 1; }
@@ -465,7 +427,6 @@ img {
     100%   { opacity: 0; }
 }
 
-/* Keyframe da 1ª foto: começa VISÍVEL imediatamente (sem o 1.5s inicial preto) */
 @keyframes fadeSlideFirst {
     0%     { opacity: 1; transform: scale(1); }
     16.66% { opacity: 1; }
@@ -473,9 +434,6 @@ img {
     100%   { opacity: 0; }
 }
 
-/* ==========================================================
-   GRADE DE HORÁRIOS (Cultos) - Flexbox Smart Layout
-   ========================================================== */
 .schedule-grid {
     display: flex;
     flex-wrap: wrap;
@@ -485,8 +443,8 @@ img {
 }
 
 .schedule-card {
-    flex: 1 1 280px; /* Cresce, encolhe e tem base de 280px */
-    max-width: 320px; /* Trava num tamanho razoável para não virar banner, forçando eles a dividirem linhas harmonicamente (ex: 3 em cima, 2 centralizados embaixo) */
+    flex: 1 1 280px; 
+    max-width: 320px; 
     background: var(--bg-card);
     padding: 35px 25px;
     border-radius: 12px;
@@ -494,12 +452,11 @@ img {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
     border: 1px solid rgba(0,0,0,0.03);
-    border-bottom: 4px solid var(--white); /* Borda invisível para crescimento animado no hover */
+    border-bottom: 4px solid var(--white); 
     position: relative;
     overflow: hidden;
 }
 
-/* Efeito sutil no fundo ao passar o hover */
 .schedule-card::before {
     content: '';
     position: absolute;
@@ -511,24 +468,24 @@ img {
 
 .schedule-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(46, 105, 255, 0.15); /* Sombra leva tom de Azul */
-    border-bottom: 4px solid var(--primary-color); /* Hover base no Azul */
+    box-shadow: 0 15px 35px rgba(46, 105, 255, 0.15); 
+    border-bottom: 4px solid var(--primary-color); 
 }
 
 .schedule-card:hover::before {
-    opacity: 0; /* Remove aquele fundo estranho nos cartões */
+    opacity: 0; 
 }
 
 .card-icon {
     font-size: 2.2rem;
-    color: var(--primary-color); /* Ícone no Azul Principal */
+    color: var(--primary-color); 
     margin-bottom: 20px;
     transition: transform 0.3s ease;
 }
 
 .schedule-card:hover .card-icon {
     transform: scale(1.1);
-    color: var(--primary-color); /* Fica Azul Forte ao hover (Mantém o foco minimalista) */
+    color: var(--primary-color); 
 }
 
 .schedule-card h3 {
@@ -568,32 +525,29 @@ img {
     z-index: 1;
 }
 
-/* ==========================================================
-   LOCALIZAÇÃO (Mapa e Contato)
-   ========================================================== */
 .location-content {
     display: flex;
-    flex-wrap: wrap; /* Flex-wrap pra jogar pra linha de baixo quem não couber na tela mobile */
+    flex-wrap: wrap; 
     gap: 30px;
     margin-top: 40px;
     text-align: left;
 }
 
 .location-info {
-    flex: 1; /* Ocupa 1 proporção */
+    flex: 1; 
     min-width: 300px;
-    background: var(--primary-color); /* Fundo Azul Sólido Novo */
+    background: var(--primary-color); 
     color: var(--white);
     padding: 40px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 5px 20px rgba(46, 105, 255, 0.2); /* Sombreado elegante azul */
+    box-shadow: 0 5px 20px rgba(46, 105, 255, 0.2); 
 }
 
 .location-info h3 {
-    color: var(--white); /* Título forte e puramente branco */
+    color: var(--white); 
     font-size: 1.8rem;
     margin-bottom: 25px;
 }
@@ -604,28 +558,25 @@ img {
     gap: 15px;
     margin-bottom: 20px;
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.9); /* Branco suavizado para leitura fluida */
+    color: rgba(255, 255, 255, 0.9); 
 }
 
 .location-info p i {
-    color: var(--white); /* Ícones completamente brancos e clean */
+    color: var(--white); 
     font-size: 1.25rem;
     margin-top: 4px;
 }
 
 .location-map {
-    flex: 2; /* O mapa será um pouco mais largo, ocupando 2 proporções */
+    flex: 2; 
     min-width: 300px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ==========================================================
-   RODAPÉ (Footer) e Redes Sociais
-   ========================================================== */
 .footer {
-    background-color: #100f0d; /* Fixo usando Preto puro para não inverter no Dark Mode */
+    background-color: #100f0d; 
     color: rgba(255, 255, 255, 0.8);
     padding-top: 60px;
 }
@@ -633,7 +584,7 @@ img {
 .footer-container {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Garante que quera sem amassar caso a tela encolha */
+    flex-wrap: wrap; 
     gap: 40px;
     margin-bottom: 40px;
 }
@@ -666,23 +617,20 @@ img {
 }
 
 .social-icons a:hover {
-    background: var(--modern-gradient); /* Usando o gradiente super premium ao passar a setinha no footer */
-    color: var(--text-color); /* O ícone fica Preto para dar excelente leitura sobre o fundo colorido claro */
+    background: var(--modern-gradient); 
+    color: var(--text-color); 
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 155, 146, 0.4); /* Reflete leve brilho turquesa embaixo */
+    box-shadow: 0 5px 15px rgba(0, 155, 146, 0.4); 
 }
 
 .footer-bottom {
-    background-color: #080706; /* Um tom ainda mais escuro que o 100f0d */
+    background-color: #080706; 
     text-align: center;
     padding: 20px 0;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* ==========================================================
-   ANIMAÇÕES CSS DE SUPORTE
-   ========================================================== */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -698,7 +646,6 @@ img {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---- Animação de entrada do Hero ---- */
 .hero-content h1 {
     animation: fadeInDown 0.9s ease-out both;
 }
@@ -711,7 +658,6 @@ img {
     animation: fadeIn 1s ease-out 0.45s both;
 }
 
-/* ---- SCROLL REVEAL (leve: fade + slide para cima) ---- */
 .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -723,20 +669,17 @@ img {
     transform: translateY(0);
 }
 
-/* Delays encadeados — para cards aparecerem em cascata */
 .reveal-delay-1 { transition-delay: 0.08s; }
 .reveal-delay-2 { transition-delay: 0.18s; }
 .reveal-delay-3 { transition-delay: 0.28s; }
 .reveal-delay-4 { transition-delay: 0.38s; }
 .reveal-delay-5 { transition-delay: 0.48s; }
 
-/* ---- Respeita usuários com preferência por menos movimento ---- */
 @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .hero-content h1, .hero-content p, .hero-buttons { animation: none; }
 }
 
-/* ---- PULSE suave nos ícones dos cards ao passar o mouse ---- */
 @keyframes pulse-icon {
     0%   { transform: scale(1); }
     45%  { transform: scale(1.2); }
@@ -747,18 +690,13 @@ img {
     animation: pulse-icon 0.5s ease;
 }
 
-/* ==========================================================
-   MEDIA QUERIES - RESPONSIVIDADE (Tablets e Mobile)
-   ========================================================== */
-
-/* Tablets em diante (Max 900px) */
 @media screen and (max-width: 900px) {
     .about-container {
-        flex-direction: column; /* Joga texto para cima, imagem para baixo */
+        flex-direction: column; 
     }
     
     .location-content {
-        flex-direction: column; /* Joga box texto pra cima, mapa pra baixo */
+        flex-direction: column; 
     }
     
     .hero-content h1 {
@@ -766,49 +704,48 @@ img {
     }
 }
 
-/* Telas menores (Mobile) Max 768px */
 @media screen and (max-width: 768px) {
-    /* Exibindo ícone de Menu Hamburger */
+    
 .menu-icon {
     display: block;
-    color: var(--white); /* Alterado de var(--text-color) para var(--white) */
+    color: var(--white); 
 }
 
 .dark-mode .menu-icon {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
-    /* Configuração do Dropdown do Menu */
+    
     .nav-menu {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--bg-card); /* Usa a cor de fundo do tema (Branco no Light / Preto no Dark) */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Sombra para dar profundidade sobre o conteúdo */
+    background-color: var(--bg-card); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
     max-height: 0; 
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1000; /* Garante que o menu fique por CIMA de tudo */
+    z-index: 1000; 
 }
-    /* Garante que o fundo do menu mude no Dark Mode */
+    
 .dark-mode .nav-menu {
-    background-color: var(--bg-card); /* No Dark Mode, var(--bg-card) é #1a1917 */
+    background-color: var(--bg-card); 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
     
     .nav-menu ul {
         flex-direction: column;
         gap: 0;
-        padding: 0; /* padding reset */
+        padding: 0; 
     }
     
     .nav-menu ul li {
         text-align: center;
-        justify-content: center; /* Centraliza a chave do dark mode para não sumir */
+        justify-content: center; 
         width: 100%;
         min-height: 50px;
     }
-    /* Localize onde está o switch no menu mobile */
+    
 .nav-menu ul li:last-child {
     padding: 40px 0; 
     display: flex;
@@ -840,21 +777,20 @@ img {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-/* Efeito de hover no Dark Mode */
 .dark-mode .nav-menu ul li a:hover {
     background-color: rgba(255, 255, 255, 0.03);
     color: var(--primary-color);
 }
     
-    /* Mostrar menu quando checkbox checado pelo label (#menu-toggle) */
+    
     .menu-checkbox:checked ~ .nav-menu {
-        max-height: 450px; /* Aumentado pra garantir espaço pro botão de menu novo */
+        max-height: 450px; 
     }
     
-    /* Demais ajustes e reduções para celular */
+    
     .hero-content h1 {
         font-size: 2.2rem;
-        line-height: 1.15; /* Reduz brutalmente o espaço vertical que a fonte herdava do corpo em quebras de linha */
+        line-height: 1.15; 
     }
     
     .hero-buttons {
@@ -866,20 +802,20 @@ img {
         padding: 50px 0;
     }
 
-    /* Transformando a Grade de Cultos num Carrossel Arrastável (Swipe) no Mobile */
+    
     .schedule-grid {
         flex-wrap: nowrap;
         justify-content: flex-start;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        padding-bottom: 20px; /* Espaço para não cortar sombra ou scrollbar */
+        padding-bottom: 20px; 
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
-        gap: 15px; /* Reduz espaçamento no mobile para indicar que tem mais pro lado */
+        gap: 15px; 
     }
 
     .schedule-card {
-        flex: 0 0 82%; /* Cartão ocupa grande parte mas deixa ver o próximo surgindo */
+        flex: 0 0 82%; 
         max-width: none;
         scroll-snap-align: center;
         margin: 0; 
@@ -894,3 +830,5 @@ img {
         justify-content: center;
     }
 }
+
+

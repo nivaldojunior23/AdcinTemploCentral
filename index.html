@@ -9,28 +9,17 @@
     
     <link rel="icon" type="image/svg+xml" href="/public/adcinvetor.svg">
     <link rel="apple-touch-icon" href="/public/adcinvetor.png">
-    <link rel="manifest" href="/public/site.webmanifest">
-    
-    <!-- Fontes (Utilizando 'Inter' e Arial/Helvetica de fallback) -->
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Ícones do FontAwesome (necessário para as redes sociais) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS Externo -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Preload da imagem principal do hero (aparece imediatamente ao abrir o site) -->
     <link rel="preload" as="image" href="public/_MG_9831.jpg">
 </head>
 <body>
-
-    <!-- CABEÇALHO (Header) -->
     <header class="header">
         <div class="container header-container">
-            <!-- LOGOTIPO: As duas imagens trocam dependendo do tema claro/escuro -->
             <a href="#inicio" class="logo">
                 <div class="logo-wrapper">
                     <img src="public/Simplification.svg" alt="Adcin Tema Claro" class="logo-img">
@@ -38,19 +27,14 @@
                 </div>
                 <span>Templo Central</span>
             </a>
-            
-            <!-- Botão Menu Mobile (Oculto no desktop, exibido no mobile) -->
             <input type="checkbox" id="menu-toggle" class="menu-checkbox">
             <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
-            
-            <!-- MENU DE NAVEGAÇÃO -->
             <nav class="nav-menu">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#cultos">Cultos</a></li>
                     <li><a href="#localizacao">Localização</a></li>
-                    <!-- Botão de Dark Mode -->
                     <li>
                         <label class="theme-switch" for="theme-toggle">
                             <input type="checkbox" id="theme-toggle" aria-label="Alternar tema">
@@ -67,21 +51,16 @@
     </header>
 
     <main>
-        <!-- DESTAQUE (Hero Section) -->
-        <!-- A imagem de fundo é alterada no arquivo style.css na classe .hero -->
         <section id="inicio" class="hero">
             <div class="hero-content container">
                 <h1>Uma família para pertencer</h1>
                 <p>A ADCIN – Templo Central é uma casa onde pessoas reais encontram um Deus real, onde ninguém precisa fingir ser perfeito para ser amado, onde caminhamos juntos, aprendendo a seguir a Cristo todos os dias.</p>
                 <div class="hero-buttons">
-                    <!-- Links para ação: Altere os hrefs de acordo com a necessidade (Ex: Link do YouTube) -->
                     <a href="https://youtube.com/@adcintemplocentral.?si=z_5qxDDBwn0v76hx" class="btn btn-primary">Assista Online</a>
                     <a href="#localizacao" class="btn btn-secondary">Como Chegar</a>
                 </div>
             </div>
         </section>
-
-        <!-- SOBRE NÓS -->
         <section id="sobre" class="about section">
             <div class="container about-container">
                 <div class="about-text">
@@ -94,7 +73,6 @@
                     </p>
                     <p>Não importa de onde você vem ou qual é a sua história, na nossa casa sempre haverá um lugar especial para você. Junte-se a nós nesta jornada de fé!</p>
                 </div>
-                <!-- Carrossel de Imagens -->
                 <div class="about-image slideshow">
                     <img src="public/IMG_0313.jpg"  alt="Comunhão 1">
                     <img src="public/_MG_9677.jpg" alt="Comunhão 2">
@@ -105,15 +83,12 @@
                 </div>
             </div>
         </section>
-
-        <!-- GRADE DE HORÁRIOS (Cultos) -->
         <section id="cultos" class="schedule section bg-light">
             <div class="container">
                 <h2 class="section-title reveal">Nossos Cultos e Reuniões</h2>
                 <p class="section-subtitle reveal reveal-delay-1">Reserve um tempo para estar na casa de Deus. Escolha o melhor horário para você e sua família.</p>
                 
                 <div class="schedule-grid">
-                    <!-- CARTÃO 5 (Novo Adicionado) -->
                     <div class="schedule-card reveal reveal-delay-1">
                         <div class="card-icon"><i class="fas fa-sun"></i></div>
                         <h3>Culto do Meio Dia</h3>
@@ -121,8 +96,6 @@
                         <p class="time">12:00</p>
                         <p class="desc">Pausa diária para buscar a presença de Deus, clamar vitórias e fortalecer o espírito no meio do dia.</p>
                     </div>
-
-                    <!-- CARTÃO 4 -->
                     <div class="schedule-card reveal reveal-delay-2">
                         <div class="card-icon"><i class="fas fa-hand-holding"></i></div>
                         <h3>Culto de Adoração</h3>
@@ -130,8 +103,6 @@
                         <p class="time">19:00</p>
                         <p class="desc">Tempo especial de entrega a Deus por meio de cânticos, comunhão sincera e meditação nas Escrituras.</p>
                     </div>
-
-                    <!-- CARTÃO 3 -->
                     <div class="schedule-card reveal reveal-delay-3">
                         <div class="card-icon"><i class="fas fa-dove"></i></div>
                         <h3>Culto de Ensino</h3>
@@ -139,8 +110,6 @@
                         <p class="time">19:00</p>
                         <p class="desc">Reunião especialmente dedicada ao ensino profundo da Palavra e fortalecimento da fé.</p>
                     </div>
-
-                    <!-- CARTÃO 2 -->
                     <div class="schedule-card reveal reveal-delay-4">
                         <div class="card-icon"><i class="fas fa-book-open"></i></div>
                         <h3>Escola Bíblica</h3>
@@ -148,8 +117,6 @@
                         <p class="time">08:00</p>
                         <p class="desc">Aprofunde seu conhecimento nas Escrituras Sagradas com turmas para todas as idades.</p>
                     </div>
-
-                    <!-- CARTÃO 1 -->
                     <div class="schedule-card reveal reveal-delay-5">
                         <div class="card-icon"><i class="fas fa-pray"></i></div>
                         <h3>Culto de Adoração</h3>
@@ -160,8 +127,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- LOCALIZAÇÃO -->
         <section id="localizacao" class="location section">
             <div class="container align-center">
                 <h2 class="section-title reveal">Onde Estamos</h2>
@@ -170,14 +135,12 @@
                 <div class="location-content">
                     <div class="location-info">
                         <h3>Endereço</h3>
-                        <!-- Altere os dados de endereço, WhatsApp e e-mail -->
                         <p><i class="fas fa-map-marker-alt"></i> Cidade Nova III, R. SN 06, 100 - Cidade Nova, Ananindeua - PA, 67130-820</p>
                         <p><i class="fas fa-phone"></i> (91) 3235-4568</p>
                         <p><i class="fas fa-envelope"></i> adcin.tc@gmail.com </p>
                     </div>
                     
                     <div class="location-map">
-                        <!-- MAPA DO GOOGLE (Iframe): Substitua o link em src="" pelo link real gerado no Google Maps correspondente à sua igreja -->
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.679014502915!2d-48.4057302!3d-1.3692777999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a46002680bafab%3A0x437493a6b086c09!2sADCIN%20-%20Templo%20Central!5e0!3m2!1spt-BR!2sbr!4v1773232418049!5m2!1spt-BR!2sbr"
                             width="100%" 
@@ -192,8 +155,6 @@
             </div>
         </section>
     </main>
-
-    <!-- RODAPÉ (Footer) e Redes Sociais -->
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
@@ -204,7 +165,6 @@
             <div class="footer-social">
                 <h4>Conecte-se conosco</h4>
                 <div class="social-icons">
-                    <!-- Links para as redes da igreja: substitua o '#' pela URL correta -->
                     <a href="https://www.instagram.com/adcin.templocentral?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/adcin.templocentral" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> 
                     <a href="https://youtube.com/@adcintemplocentral.?si=z_5qxDDBwn0v76hx" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -216,14 +176,11 @@
             <p>&copy; 2026 Adcin Templo Central. Todos os direitos reservados.</p>
         </div>
     </footer>
-
-    <!-- Script para Modo Escuro (Dark Mode) -->
     <script>
         const themeToggleCheckbox = document.getElementById('theme-toggle');
         const themeIcon = document.querySelector('.theme-switch .knob i');
         const body = document.body;
 
-        // Verifica se há preferência salva no LocalStorage ou se o sistema do usuário prefere Modo Escuro
         const savedTheme = localStorage.getItem('theme');
         
         if (savedTheme === 'dark') {
@@ -231,14 +188,13 @@
             themeToggleCheckbox.checked = true;
             themeIcon.classList.replace('fa-sun', 'fa-moon');
         } else if (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // Se não tem salvamento, mas o Windows/Android do usuário é Escuro (Dark Mode nativo)
+
             body.classList.add('dark-mode');
             themeToggleCheckbox.checked = true;
             themeIcon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'dark'); // Opcional: já gravamos a preferência do sistema pro futuro
+            localStorage.setItem('theme', 'dark');
         }
 
-        // Alternar tema
         themeToggleCheckbox.addEventListener('change', () => {
             if (themeToggleCheckbox.checked) {
                 body.classList.add('dark-mode');
@@ -249,12 +205,10 @@
                 localStorage.setItem('theme', 'light');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
             }
-            
-            // Fechar Menu Mobile caso esteja aberto ao trocar de tema
+
             document.getElementById('menu-toggle').checked = false;
         });
 
-        // Fechar Menu Mobile ao clicar em qualquer item da lista de navegação
         const navLinks = document.querySelectorAll('.nav-menu ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -262,12 +216,11 @@
             });
         });
 
-        // ---- SCROLL REVEAL (IntersectionObserver nativo) ----
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Anima só uma vez
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
@@ -276,3 +229,5 @@
     </script>
 </body>
 </html>
+
+
