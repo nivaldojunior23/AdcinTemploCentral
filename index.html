@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bem-vindos à Adcin Templo Central. Conheça nossos cultos, visão e faça parte da nossa família.">
-    <title>Adcin Templo Central</title>
-    <link rel="icon" type="image/svg+xml" href="public/adcinvetor.svg">
+    <meta name="description" content="Bem-vindos à Adcin Templo Central. Uma igreja evangélica em Ananindeua, fundamentada na Palavra, amando pessoas. Conheça nossos cultos e faça parte da família.">
+    <title>Adcin Templo Central | Igreja Família</title>
     
+    <!-- Open Graph / Redes Sociais -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adcintemplocentral.com/">
+    <meta property="og:title" content="Adcin Templo Central | Uma família para pertencer">
+    <meta property="og:description" content="Uma igreja evangélica em Ananindeua - PA construída para pessoas reais que buscam e amam a Deus. Venha nos visitar.">
+    <meta property="og:image" content="https://adcintemplocentral.com/public/_MG_9831.jpg">
+    
+    <link rel="icon" type="image/svg+xml" href="public/adcinvetor.svg">
     <link rel="icon" type="image/svg+xml" href="/public/adcinvetor.svg">
     <link rel="apple-touch-icon" href="/public/adcinvetor.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -16,6 +23,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preload" as="image" href="public/_MG_9831.jpg">
+    
+    <!-- JSON-LD (Structured Data) SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "Adcin Templo Central",
+      "image": "https://adcintemplocentral.com/public/_MG_9831.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. SN 06, 100",
+        "addressLocality": "Ananindeua",
+        "addressRegion": "PA",
+        "postalCode": "67130-820",
+        "addressCountry": "BR"
+      },
+      "telephone": "(91) 3235-4568",
+      "url": "https://adcintemplocentral.com/"
+    }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -28,19 +55,20 @@
                 <span>Templo Central</span>
             </a>
             <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-            <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars" aria-hidden="true"></i></label>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#cultos">Cultos</a></li>
+                    <li><a href="#estudos">Estudos</a></li>
                     <li><a href="#localizacao">Localização</a></li>
                     <li>
                         <label class="theme-switch" for="theme-toggle">
                             <input type="checkbox" id="theme-toggle" aria-label="Alternar tema">
                             <div class="slider">
                                 <div class="knob">
-                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-sun" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </label>
@@ -73,13 +101,13 @@
                     </p>
                     <p>Não importa de onde você vem ou qual é a sua história, na nossa casa sempre haverá um lugar especial para você. Junte-se a nós nesta jornada de fé!</p>
                 </div>
-                <div class="about-image slideshow">
-                    <img src="public/IMG_0313.jpg"  alt="Comunhão 1">
-                    <img src="public/_MG_9677.jpg" alt="Comunhão 2">
-                    <img src="public/_MG_9704.jpg" alt="Comunhão 3">
-                    <img src="public/_MG_9819.jpg" alt="Comunhão 4">
-                    <img src="public/_MG_9846.jpg" alt="Comunhão 5">
-                    <img src="public/_MG_9878.jpg" alt="Comunhão 6">
+                <div class="about-image" id="about-slider">
+                    <img src="public/IMG_0313.jpg" alt="Comunhão 1" class="slider-img active">
+                    <img src="public/_MG_9677.jpg" alt="Comunhão 2" class="slider-img" loading="lazy">
+                    <img src="public/_MG_9704.jpg" alt="Comunhão 3" class="slider-img" loading="lazy">
+                    <img src="public/_MG_9819.jpg" alt="Comunhão 4" class="slider-img" loading="lazy">
+                    <img src="public/_MG_9846.jpg" alt="Comunhão 5" class="slider-img" loading="lazy">
+                    <img src="public/_MG_9878.jpg" alt="Comunhão 6" class="slider-img" loading="lazy">
                 </div>
             </div>
         </section>
@@ -90,39 +118,58 @@
                 
                 <div class="schedule-grid">
                     <div class="schedule-card reveal reveal-delay-1">
-                        <div class="card-icon"><i class="fas fa-sun"></i></div>
+                        <div class="card-icon"><i class="fas fa-sun" aria-hidden="true"></i></div>
                         <h3>Culto do Meio Dia</h3>
                         <p class="day">Segunda a Sexta</p>
                         <p class="time">12:00</p>
                         <p class="desc">Pausa diária para buscar a presença de Deus, clamar vitórias e fortalecer o espírito no meio do dia.</p>
                     </div>
                     <div class="schedule-card reveal reveal-delay-2">
-                        <div class="card-icon"><i class="fas fa-hand-holding"></i></div>
+                        <div class="card-icon"><i class="fas fa-hand-holding" aria-hidden="true"></i></div>
                         <h3>Culto de Adoração</h3>
                         <p class="day">Quarta-Feira</p>
                         <p class="time">19:00</p>
                         <p class="desc">Tempo especial de entrega a Deus por meio de cânticos, comunhão sincera e meditação nas Escrituras.</p>
                     </div>
                     <div class="schedule-card reveal reveal-delay-3">
-                        <div class="card-icon"><i class="fas fa-dove"></i></div>
+                        <div class="card-icon"><i class="fas fa-dove" aria-hidden="true"></i></div>
                         <h3>Culto de Ensino</h3>
                         <p class="day">Sexta-Feira</p>
                         <p class="time">19:00</p>
                         <p class="desc">Reunião especialmente dedicada ao ensino profundo da Palavra e fortalecimento da fé.</p>
                     </div>
                     <div class="schedule-card reveal reveal-delay-4">
-                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="card-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
                         <h3>Escola Bíblica</h3>
                         <p class="day">Domingo</p>
                         <p class="time">08:00</p>
                         <p class="desc">Aprofunde seu conhecimento nas Escrituras Sagradas com turmas para todas as idades.</p>
                     </div>
                     <div class="schedule-card reveal reveal-delay-5">
-                        <div class="card-icon"><i class="fas fa-pray"></i></div>
+                        <div class="card-icon"><i class="fas fa-pray" aria-hidden="true"></i></div>
                         <h3>Culto de Adoração</h3>
                         <p class="day">Domingo</p>
                         <p class="time">18:00</p>
                         <p class="desc">Momento principal de louvor, adoração e ministração da Palavra para toda a família.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="estudos" class="study section">
+            <div class="container">
+                <h2 class="section-title reveal">Estudos e Sermões</h2>
+                <p class="section-subtitle reveal reveal-delay-1">Aprofunde-se na Palavra com materiais, esboços e slides dos nossos estudos e sermões.</p>
+                
+                <div class="study-grid">
+                    <div class="study-card reveal reveal-delay-1">
+                        <div class="study-icon"><i class="fas fa-book-reader" aria-hidden="true"></i></div>
+                        <div class="study-content">
+                            <h3>Identidade</h3>
+                            <p class="study-desc">Material completo com slides e anotações do sermão.</p>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1z8BIYng0VzO4jLmLzbyUd1mekA1RVHkc?usp=drive_link" target="_blank" class="btn btn-primary study-btn">
+                            Acessar Material <i class="fas fa-external-link-alt" aria-hidden="true" style="margin-left: 8px; font-size: 0.85em;"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -135,9 +182,9 @@
                 <div class="location-content">
                     <div class="location-info">
                         <h3>Endereço</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Cidade Nova III, R. SN 06, 100 - Cidade Nova, Ananindeua - PA, 67130-820</p>
-                        <p><i class="fas fa-phone"></i> (91) 3235-4568</p>
-                        <p><i class="fas fa-envelope"></i> adcin.tc@gmail.com </p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Cidade Nova III, R. SN 06, 100 - Cidade Nova, Ananindeua - PA, 67130-820</p>
+                        <p><a href="https://wa.me/5591988254884?text=A%20paz%20do%20Senhor%2C%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Templo%20Central" target="_blank" class="contact-link"><i class="fab fa-whatsapp" aria-hidden="true"> </i> (91) 98825-4884</a></p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> adcin.tc@gmail.com </p>
                     </div>
                     
                     <div class="location-map">
@@ -155,6 +202,12 @@
             </div>
         </section>
     </main>
+    
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5591988254884?text=A%20paz%20do%20Senhor%2C%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Templo%20Central" class="floating-whatsapp" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
@@ -165,9 +218,9 @@
             <div class="footer-social">
                 <h4>Conecte-se conosco</h4>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/adcin.templocentral?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/adcin.templocentral" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> 
-                    <a href="https://youtube.com/@adcintemplocentral.?si=z_5qxDDBwn0v76hx" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/adcin.templocentral?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/adcin.templocentral" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> 
+                    <a href="https://youtube.com/@adcintemplocentral.?si=z_5qxDDBwn0v76hx" target="_blank" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -226,6 +279,52 @@
         }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Slider Javascript Automático e Escalável
+        const sliderImgs = document.querySelectorAll('#about-slider .slider-img');
+        if (sliderImgs.length > 0) {
+            let currentSlide = 0;
+            setInterval(() => {
+                sliderImgs[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % sliderImgs.length;
+                sliderImgs[currentSlide].classList.add('active');
+            }, 4000); // Troca a cada 4 segundos
+        }
+        
+        // Sistema de Feedback Toast Simples
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Trigger reflow & add show class for animation
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            // Remove after 3s
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Aplicando toast nos botões externos
+        document.querySelectorAll('a[target="_blank"].btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                showToast("Redirecionando...");
+            });
+        });
+
+        // Controle de visibilidade do Botão Flutuante de WhatsApp
+        const floatingBtn = document.querySelector('.floating-whatsapp');
+        window.addEventListener('scroll', () => {
+            // Conta a partir de 400px de descida (começo aproximado da div 'Quem Somos')
+            if (window.scrollY > 400) {
+                floatingBtn.classList.add('show-btn');
+            } else {
+                floatingBtn.classList.remove('show-btn');
+            }
+        });
     </script>
 </body>
 </html>
