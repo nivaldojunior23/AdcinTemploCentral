@@ -80,7 +80,7 @@ Abra o `index.html` diretamente no navegador, ou use uma extensão como **Live S
 | | |
 |---|---|
 | 📍 Endereço | Cidade Nova III, R. SN 06, 100 - Ananindeua, PA |
-| 📞 Telefone | (91) 3235-4568 |
+| 📞 Telefone | (91) 98825-4884 |
 | 📧 E-mail | adcin.tc@gmail.com |
 | 📸 Instagram | [@adcin.templocentral](https://www.instagram.com/adcin.templocentral) |
 | 📘 Facebook | [adcin.templocentral](https://www.facebook.com/adcin.templocentral) |
