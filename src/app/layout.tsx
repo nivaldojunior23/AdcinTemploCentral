@@ -11,6 +11,17 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Adcin Templo Central",
   description: "Bem-vindos à Adcin Templo Central. Uma igreja evangélica em Ananindeua, fundamentada na Palavra, amando pessoas. Conheça nossos cultos e faça parte da família.",
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+  },
   openGraph: {
     type: "website",
     url: "https://adcintemplocentral.com.br/",
