@@ -4,7 +4,7 @@ export const revalidate = 3600; // Cache on server/CDN for 1 hour to prevent API
 
 export async function GET() {
   const apiKey = process.env.YOUTUBE_API_KEY;
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+  const channelId = process.env.YOUTUBE_CHANNEL_ID || process.env.YOUTUBE_CHANNEL_I;
 
   // Mock data for graceful fallback if environment variables are not yet configured or fail
   const mockVideo = {
