@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Video {
   id: string;
@@ -98,10 +99,13 @@ export default function YouTubeSection() {
           >
             {/* Left side: Video Thumbnail & Play trigger overlay */}
             <div className="youtube-thumbnail-container">
-              <img 
+              <Image 
                 src={video.thumbnail} 
                 alt={video.title} 
                 className="youtube-thumbnail"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
               />
               <a 
                 href={video.url} 

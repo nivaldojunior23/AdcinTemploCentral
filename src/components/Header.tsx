@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -82,10 +83,13 @@ export default function Header() {
       <div className="container header-container">
         <a href="#inicio" onClick={(e) => scrollToSection(e, "inicio")} className="logo">
           <div className="logo-wrapper">
-            <img
+            <Image
               src="/adcinvetor.svg"
               alt="Adcin Logo"
               className="logo-img-dark"
+              width={48}
+              height={48}
+              priority
             />
           </div>
           <span>Templo Central</span>
