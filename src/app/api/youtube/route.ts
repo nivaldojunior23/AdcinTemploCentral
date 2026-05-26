@@ -9,7 +9,7 @@ export async function GET() {
   // Mock data for graceful fallback if environment variables are not yet configured or fail
   const mockVideo = {
     id: "z_5qxDDBwn0",
-    title: "Culto de Celebração & Adoração — ADCIN Templo Central",
+    title: "A Importância da Oração — Devocional Diário",
     thumbnail: "/_MG_9831.jpg", // high quality fallback image
     publishedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // Yesterday
     url: "https://youtube.com/@adcintemplocentral",
@@ -28,8 +28,8 @@ export async function GET() {
   }
 
   try {
-    // 1. Fetch the 7 latest videos from the channel to ensure we have standard videos if the most recent ones are Shorts
-    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&key=${apiKey}&maxResults=7`;
+    // 1. Fetch the 25 latest videos from the channel to ensure we have standard videos (e.g. cuts and devotionals)
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&key=${apiKey}&maxResults=25`;
     
     const searchResponse = await fetch(searchUrl, {
       next: { revalidate: 3600 } // 1 hour caching in Next.js
@@ -71,6 +71,11 @@ export async function GET() {
       return NextResponse.json(mockVideo);
     }
 
+    // Sort videosData.items to match the original chronological order of videoIds
+    const orderedVideos = [...videosData.items].sort((a: any, b: any) => {
+      return videoIds.indexOf(a.id) - videoIds.indexOf(b.id);
+    });
+
     // Helper to parse ISO 8601 duration (e.g., PT1H2M10S, PT45S, PT1M) to seconds
     const parseISO8601Duration = (durationStr: string): number => {
       const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
@@ -84,23 +89,23 @@ export async function GET() {
       return hours * 3600 + minutes * 60 + seconds;
     };
 
-    // 4. Find the first video that is longer than 60 seconds (not a Short)
+    // 4. Find the first video that is between 60 seconds (not a Short) and 45 minutes (preaching cuts and devotionals)
     let selectedVideo = null;
-    for (const item of videosData.items) {
+    for (const item of orderedVideos) {
       const durationStr = item.contentDetails?.duration || "";
       const durationSeconds = parseISO8601Duration(durationStr);
       
-      // Standard video is > 60 seconds
-      if (durationSeconds > 60) {
+      // Target only preaching cuts and devotionals (between 1 and 45 minutes)
+      if (durationSeconds > 60 && durationSeconds < 2700) {
         selectedVideo = item;
         break;
       }
     }
 
-    // 5. Fallback if all recent uploads are Shorts (very unlikely but ensures stability)
+    // 5. Fallback if all recent uploads are Shorts or full Lives (very unlikely but ensures stability)
     if (!selectedVideo) {
-      console.warn("All recent fetched uploads are Shorts. Using the first video as fallback.");
-      selectedVideo = videosData.items[0];
+      console.warn("All recent fetched uploads are Shorts or full Lives. Using the first video as fallback.");
+      selectedVideo = orderedVideos[0];
     }
 
     const videoId = selectedVideo.id;

@@ -57,7 +57,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <a
-            href="https://www.youtube.com/@adcintemplocentral."
+            href="https://www.youtube.com/@adcintemplocentral./streams"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
