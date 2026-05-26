@@ -72,7 +72,7 @@ export async function GET() {
     }
 
     // Sort videosData.items to match the original chronological order of videoIds
-    const orderedVideos = [...videosData.items].sort((a: any, b: any) => {
+    const orderedVideos = [...videosData.items].sort((a: { id: string }, b: { id: string }) => {
       return videoIds.indexOf(a.id) - videoIds.indexOf(b.id);
     });
 
