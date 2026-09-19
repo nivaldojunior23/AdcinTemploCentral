@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 3600; // Cache on server/CDN for 1 hour to prevent API quota depletion
+export const revalidate = 1800; // Cache for 30 minutes to prevent API quota depletion
 
 export async function GET() {
   const apiKey = process.env.YOUTUBE_API_KEY;
@@ -8,11 +8,11 @@ export async function GET() {
 
   // Mock data for graceful fallback if environment variables are not yet configured or fail
   const mockVideo = {
-    id: "z_5qxDDBwn0",
-    title: "A Importância da Oração — Devocional Diário",
-    thumbnail: "/_MG_9831.jpg", // high quality fallback image
-    publishedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // Yesterday
-    url: "https://youtube.com/@adcintemplocentral",
+    id: "r_r8Bb6AWWY",
+    title: "FOFOCA: O PECADO QUE FRAGMENTA RELACIONAMENTOS // PR. JOELDER NERIAS",
+    thumbnail: "https://i.ytimg.com/vi/r_r8Bb6AWWY/maxresdefault.jpg",
+    publishedAt: "2026-06-09T15:00:34Z",
+    url: "https://www.youtube.com/watch?v=r_r8Bb6AWWY",
     isMock: true,
   };
 
@@ -28,11 +28,11 @@ export async function GET() {
   }
 
   try {
-    // 1. Fetch the 25 latest videos from the channel to ensure we have standard videos (e.g. cuts and devotionals)
-    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&key=${apiKey}&maxResults=25`;
+    // 1. Fetch up to 50 latest videos from the channel to find regular videos/devotionals
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&key=${apiKey}&maxResults=50`;
     
     const searchResponse = await fetch(searchUrl, {
-      next: { revalidate: 3600 } // 1 hour caching in Next.js
+      next: { revalidate: 1800 } // 30 min caching in Next.js
     });
 
     if (!searchResponse.ok) {
@@ -54,10 +54,10 @@ export async function GET() {
       return NextResponse.json(mockVideo);
     }
 
-    // 3. Query the v3/videos endpoint for contentDetails (duration) and snippet
-    const videosUrl = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${videoIds.join(",")}&key=${apiKey}`;
+    // 3. Query the v3/videos endpoint for contentDetails, snippet and liveStreamingDetails
+    const videosUrl = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet,liveStreamingDetails&id=${videoIds.join(",")}&key=${apiKey}`;
     const videosResponse = await fetch(videosUrl, {
-      next: { revalidate: 3600 }
+      next: { revalidate: 1800 }
     });
 
     if (!videosResponse.ok) {
@@ -89,22 +89,37 @@ export async function GET() {
       return hours * 3600 + minutes * 60 + seconds;
     };
 
-    // 4. Find the first video that is between 60 seconds (not a Short) and 45 minutes (preaching cuts and devotionals)
+    // Helper to check if a video is/was a live stream (even if it was interrupted or completed)
+    const isLiveStream = (item: { liveStreamingDetails?: unknown; snippet?: { liveBroadcastContent?: string } }) => {
+      return Boolean(item.liveStreamingDetails) || 
+             (item.snippet?.liveBroadcastContent && item.snippet.liveBroadcastContent !== "none");
+    };
+
+    // 4. Find the first video that is NOT a live stream and is not a Short (> 60 seconds)
     let selectedVideo = null;
     for (const item of orderedVideos) {
+      if (isLiveStream(item)) {
+        continue; // Skip all lives (live, upcoming, or completed live streams/cultos)
+      }
+
       const durationStr = item.contentDetails?.duration || "";
       const durationSeconds = parseISO8601Duration(durationStr);
       
-      // Target only preaching cuts and devotionals (between 1 and 45 minutes)
-      if (durationSeconds > 60 && durationSeconds < 2700) {
+      // Target regular videos (devotionals, messages, etc. longer than 60s)
+      if (durationSeconds > 60) {
         selectedVideo = item;
         break;
       }
     }
 
-    // 5. Fallback if all recent uploads are Shorts or full Lives (very unlikely but ensures stability)
+    // 5. Secondary fallback: find any regular video that is not a live stream
     if (!selectedVideo) {
-      console.warn("All recent fetched uploads are Shorts or full Lives. Using the first video as fallback.");
+      selectedVideo = orderedVideos.find((item: { liveStreamingDetails?: unknown; snippet?: { liveBroadcastContent?: string } }) => !isLiveStream(item));
+    }
+
+    // 6. Absolute fallback if no regular videos found
+    if (!selectedVideo) {
+      console.warn("No non-live videos found. Using first video as fallback.");
       selectedVideo = orderedVideos[0];
     }
 
